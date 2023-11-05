@@ -1,0 +1,20 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class JacketTaskController : MonoBehaviour
+{
+    //keep track of flow chart of task
+    // talk to dude -> jacket appears!
+    public static JacketTaskController jacketTask;
+
+    public bool allDone = false;
+
+    void Awake() {
+        jacketTask = this;
+    }
+
+    // private void Update() {
+    //     Debug.Log(Jacket.jacket.gameObject.activeSelf);
+    // }
+}

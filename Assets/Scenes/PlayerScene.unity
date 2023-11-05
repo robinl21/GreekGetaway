@@ -490,7 +490,7 @@ MonoBehaviour:
   m_text: Taking the Stairs...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 87e6cee7a8d77ad4a9d38703681c20de, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 4590480821352586239, guid: 87e6cee7a8d77ad4a9d38703681c20de, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -928,11 +928,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2748875149969400010, guid: 38dc44fbb4ad66148a164c404a2e9e62, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.15
+      value: 7.4
       objectReference: {fileID: 0}
     - target: {fileID: 2748875149969400010, guid: 38dc44fbb4ad66148a164c404a2e9e62, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.02
+      value: 4.09
       objectReference: {fileID: 0}
     - target: {fileID: 2748875149969400010, guid: 38dc44fbb4ad66148a164c404a2e9e62, type: 3}
       propertyPath: m_LocalPosition.z

@@ -5,13 +5,17 @@ using UnityEngine.InputSystem;
 
 public class p1move : MonoBehaviour
 {
+    //MODIFYING: important stuff is all in OnMovementPerformed and FixedUpdate:
+    public static p1move p1movement;
     private PlayerControls input = null; // set from PlayerControls InputMap in scripts
     private Vector2 moveVector = Vector2.zero;
     private Rigidbody2D rb = null; // attach velocity to move
-    private float moveSpeed = 10f;
+    public float moveSpeed;
 
     private void Awake()
     {
+        p1movement = this;
+        moveSpeed = 10f;
         input = new PlayerControls();
         rb = GetComponent<Rigidbody2D>();
     }
@@ -44,10 +48,13 @@ public class p1move : MonoBehaviour
         // InputAction.CallbackContext value gives Vector2 based on direction, set by PlayerControls InputMap
         // left is [-1, 0] for ex
         moveVector = value.ReadValue<Vector2>();
+
     }
 
     private void OnMovementCancelled(InputAction.CallbackContext value)
     {   // stops player
         moveVector = Vector2.zero;
     }
+
+    
 }

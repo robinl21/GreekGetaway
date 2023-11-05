@@ -5,13 +5,16 @@ using UnityEngine.InputSystem;
 
 public class p2move : MonoBehaviour
 {
+    public static p2move p2movement;
     private PlayerControls input = null; // set from PlayerControls InputMap in scripts
     private Vector2 moveVector = Vector2.zero;
     private Rigidbody2D rb = null; // attach velocity to move
-    private float moveSpeed = 10f;
+    public float moveSpeed;
 
     private void Awake()
     {
+        p2movement = this;
+        moveSpeed = 10f;
         input = new PlayerControls();
         rb = GetComponent<Rigidbody2D>();
     }

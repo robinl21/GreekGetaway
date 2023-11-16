@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class p2move : MonoBehaviour
 {
+    //MODIFYING: important stuff is all in OnMovementPerformed and FixedUpdate:
     public static p2move p2movement;
     private PlayerControls input = null; // set from PlayerControls InputMap in scripts
     private Vector2 moveVector = Vector2.zero;

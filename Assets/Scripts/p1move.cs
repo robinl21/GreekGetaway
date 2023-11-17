@@ -7,11 +7,11 @@ public class p1move : MonoBehaviour
 {
     //MODIFYING: important stuff is all in OnMovementPerformed and FixedUpdate:
     public static p1move p1movement;
-    private PlayerControls input = null; // set from PlayerControls InputMap in scripts
+    private PlayerControls input = null; // set from PlayerControls.cs in scripts, generated from PlayerControls
     private Vector2 moveVector = Vector2.zero;
     private Rigidbody2D rb = null; // attach velocity to move
     public float moveSpeed;
-
+    public GameObject questLog;
     private void Awake()
     {
         p1movement = this;
@@ -26,6 +26,8 @@ public class p1move : MonoBehaviour
         // attaches these functions to callback when movement is performed/cancelled
         input.P1.Movement.performed += OnMovementPerformed;
         input.P1.Movement.canceled += OnMovementCancelled;
+
+        input.P1.QuestLog.performed += OnQuestLogPerformed;
     }
 
     private void OnDisable()
@@ -56,5 +58,9 @@ public class p1move : MonoBehaviour
         moveVector = Vector2.zero;
     }
 
+    private void OnQuestLogPerformed(InputAction.CallbackContext value) {
+        bool isActive = this.questLog.activeSelf;
+        this.questLog.SetActive(!isActive);
+    }
     
 }

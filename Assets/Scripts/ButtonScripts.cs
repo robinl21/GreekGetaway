@@ -18,9 +18,13 @@ public class ButtonScripts : MonoBehaviour
         btnCount = QuestScript.questScript.allQuests.Count;
 
         for (int i = 0; i < btnCount; i++) {
-            GameObject btn = (GameObject)Instantiate(buttonTemplate);
-            GameObject btnText = btn.transform.GetChild(0).gameObject;
+            GameObject btn = (GameObject)Instantiate(buttonTemplate); // create new entries dynamically
+            GameObject btnText = btn.transform.GetChild(0).gameObject; // task
             btnText.GetComponent<TMP_Text>().text = allQuests[i];
+
+            GameObject statusText = btn.transform.GetChild(1).gameObject; //status
+            statusText.GetComponent<TMP_Text>().text = questStatus[allQuests[i]];
+
             btn.SetActive(true);
             btn.transform.SetParent(this.gameObject.transform); //makes button as a child
         }
@@ -30,9 +34,13 @@ public class ButtonScripts : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var container = this.gameObject.transform;
-        for (var i = 0; i < container.childCount; i++) {
-            // Debug.Log(container.GetChild(i));
-        }
+        // var container = this.gameObject.transform;
+        // for (var i = 0; i < container.childCount; i++) {
+        //     GameObject btn = container.GetChild(i).gameObject; 
+
+        //     // Debug.Log(container.GetChild(i));
+        // }
     }
+
+
 }

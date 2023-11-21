@@ -13,6 +13,7 @@ public class QuestScript : MonoBehaviour
 
     private void Awake()
     {
+        // handle initializing which quests we want
         questScript = this;
         Debug.Log("ADD");
         allQuests.Add("Find Your Jacket!");
@@ -21,6 +22,8 @@ public class QuestScript : MonoBehaviour
         questStatus.Add("Find Your Phone!", "Try talking to other people at the party");
         allQuests.Add("Get to the second floor");
         questStatus.Add("Get to the second floor", "There's a brother stopping you...");
+        allQuests.Add("Find your bong");
+        questStatus.Add("Find your bong", "That guy with glasses looks fishy...");
 
     }
 

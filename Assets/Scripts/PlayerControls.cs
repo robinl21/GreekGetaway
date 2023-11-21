@@ -53,6 +53,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""QuestLog"",
+                    ""type"": ""Button"",
+                    ""id"": ""63d9fae4-f971-42bc-9fa8-5a10ee3ddae0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -132,6 +141,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Submit"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3a282f73-9b77-4fa5-84f9-123511b15d5f"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QuestLog"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -161,6 +181,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""name"": ""Interact"",
                     ""type"": ""Button"",
                     ""id"": ""b0ff1c4d-1249-4049-8a2a-e5d75279804f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""QuestLog"",
+                    ""type"": ""Button"",
+                    ""id"": ""a795cd5d-7da3-41d8-96b9-3ff90a50091f"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -244,6 +273,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Submit"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""958eded4-268e-47dd-94f5-dcac25f63d9d"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QuestLog"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -255,11 +295,13 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_P1_Movement = m_P1.FindAction("Movement", throwIfNotFound: true);
         m_P1_Interact = m_P1.FindAction("Interact", throwIfNotFound: true);
         m_P1_Submit = m_P1.FindAction("Submit", throwIfNotFound: true);
+        m_P1_QuestLog = m_P1.FindAction("QuestLog", throwIfNotFound: true);
         // P2
         m_P2 = asset.FindActionMap("P2", throwIfNotFound: true);
         m_P2_Movement = m_P2.FindAction("Movement", throwIfNotFound: true);
         m_P2_Submit = m_P2.FindAction("Submit", throwIfNotFound: true);
         m_P2_Interact = m_P2.FindAction("Interact", throwIfNotFound: true);
+        m_P2_QuestLog = m_P2.FindAction("QuestLog", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -324,6 +366,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_P1_Movement;
     private readonly InputAction m_P1_Interact;
     private readonly InputAction m_P1_Submit;
+    private readonly InputAction m_P1_QuestLog;
     public struct P1Actions
     {
         private @PlayerControls m_Wrapper;
@@ -331,6 +374,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Movement => m_Wrapper.m_P1_Movement;
         public InputAction @Interact => m_Wrapper.m_P1_Interact;
         public InputAction @Submit => m_Wrapper.m_P1_Submit;
+        public InputAction @QuestLog => m_Wrapper.m_P1_QuestLog;
         public InputActionMap Get() { return m_Wrapper.m_P1; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -349,6 +393,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Submit.started += instance.OnSubmit;
             @Submit.performed += instance.OnSubmit;
             @Submit.canceled += instance.OnSubmit;
+            @QuestLog.started += instance.OnQuestLog;
+            @QuestLog.performed += instance.OnQuestLog;
+            @QuestLog.canceled += instance.OnQuestLog;
         }
 
         private void UnregisterCallbacks(IP1Actions instance)
@@ -362,6 +409,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Submit.started -= instance.OnSubmit;
             @Submit.performed -= instance.OnSubmit;
             @Submit.canceled -= instance.OnSubmit;
+            @QuestLog.started -= instance.OnQuestLog;
+            @QuestLog.performed -= instance.OnQuestLog;
+            @QuestLog.canceled -= instance.OnQuestLog;
         }
 
         public void RemoveCallbacks(IP1Actions instance)
@@ -386,6 +436,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_P2_Movement;
     private readonly InputAction m_P2_Submit;
     private readonly InputAction m_P2_Interact;
+    private readonly InputAction m_P2_QuestLog;
     public struct P2Actions
     {
         private @PlayerControls m_Wrapper;
@@ -393,6 +444,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Movement => m_Wrapper.m_P2_Movement;
         public InputAction @Submit => m_Wrapper.m_P2_Submit;
         public InputAction @Interact => m_Wrapper.m_P2_Interact;
+        public InputAction @QuestLog => m_Wrapper.m_P2_QuestLog;
         public InputActionMap Get() { return m_Wrapper.m_P2; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -411,6 +463,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
+            @QuestLog.started += instance.OnQuestLog;
+            @QuestLog.performed += instance.OnQuestLog;
+            @QuestLog.canceled += instance.OnQuestLog;
         }
 
         private void UnregisterCallbacks(IP2Actions instance)
@@ -424,6 +479,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
+            @QuestLog.started -= instance.OnQuestLog;
+            @QuestLog.performed -= instance.OnQuestLog;
+            @QuestLog.canceled -= instance.OnQuestLog;
         }
 
         public void RemoveCallbacks(IP2Actions instance)
@@ -446,11 +504,13 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnSubmit(InputAction.CallbackContext context);
+        void OnQuestLog(InputAction.CallbackContext context);
     }
     public interface IP2Actions
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnSubmit(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnQuestLog(InputAction.CallbackContext context);
     }
 }

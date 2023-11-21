@@ -12,6 +12,8 @@ public class p2move : MonoBehaviour
     private Rigidbody2D rb = null; // attach velocity to move
     public float moveSpeed;
     public bool canMove = true; 
+
+    public GameObject questLog;
     private void Awake()
     {
         p2movement = this;
@@ -26,6 +28,8 @@ public class p2move : MonoBehaviour
         // attaches these functions to callback when movement is performed/cancelled
         input.P2.Movement.performed += OnMovementPerformed;
         input.P2.Movement.canceled += OnMovementCancelled;
+
+        input.P2.QuestLog.performed += OnQuestLogPerformed;
     }
 
     private void OnDisable()
@@ -55,5 +59,11 @@ public class p2move : MonoBehaviour
     private void OnMovementCancelled(InputAction.CallbackContext value)
     {   // stops player
         moveVector = Vector2.zero;
+    }
+
+
+    private void OnQuestLogPerformed(InputAction.CallbackContext value) {
+        bool isActive = this.questLog.activeSelf;
+        this.questLog.SetActive(!isActive);
     }
 }

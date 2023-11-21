@@ -2272,12 +2272,16 @@ PrefabInstance:
       value: Door 1
       objectReference: {fileID: 0}
     - target: {fileID: 6725643646598531363, guid: 06be1ec4bfd2fe54ea84aa2334270381, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.64492005
+      objectReference: {fileID: 0}
+    - target: {fileID: 6725643646598531363, guid: 06be1ec4bfd2fe54ea84aa2334270381, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -37.499
+      value: -37.509
       objectReference: {fileID: 0}
     - target: {fileID: 6725643646598531363, guid: 06be1ec4bfd2fe54ea84aa2334270381, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.501
+      value: -5.69
       objectReference: {fileID: 0}
     - target: {fileID: 6725643646598531363, guid: 06be1ec4bfd2fe54ea84aa2334270381, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2309,6 +2313,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6725643646598531363, guid: 06be1ec4bfd2fe54ea84aa2334270381, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8621460055858963416, guid: 06be1ec4bfd2fe54ea84aa2334270381, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8621460055858963416, guid: 06be1ec4bfd2fe54ea84aa2334270381, type: 3}
+      propertyPath: m_AutoTiling
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -40,18 +40,24 @@ public class DialogueTrigger : MonoBehaviour
             visualCue.SetActive(true);
             foreach (var player in playersInZone)
             {
-                if (InputManager.GetInstance().GetInteractPressed())
-                {
-                    if (player.CompareTag("Player1")){
+                if (player.CompareTag("Player1")){
+                    if (InputManager.GetInstance().GetInteractPressed()){
                         p1move movescript= player.GetComponent<p1move>();
                         movescript.canMove = false;
-
-                    }else {
-                        p2move movescript= player.GetComponent<p2move>();
-                        movescript.canMove = false;
+                        DialogueManager.GetInstance().EnterDialogueMode(inkJSON, true);
                     }
-                    DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
+                    }
+
+                else {
+                    if (InputManager1.GetInstance().GetInteractPressed()){
+                        p2move movescript = player.GetComponent<p2move>();
+                        movescript.canMove = false;
+                        DialogueManager.GetInstance().EnterDialogueMode(inkJSON, false);
+                    }
                 }
+                
+               
+                
             }
         }
         else

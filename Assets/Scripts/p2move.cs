@@ -11,7 +11,7 @@ public class p2move : MonoBehaviour
     private Vector2 moveVector = Vector2.zero;
     private Rigidbody2D rb = null; // attach velocity to move
     public float moveSpeed;
-    public bool canMove; 
+    public bool canMove = true; 
     private void Awake()
     {
         p2movement = this;

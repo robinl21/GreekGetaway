@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DialogeTrigger : MonoBehaviour
+public class DialogueTrigger : MonoBehaviour
 {
     [Header("Visual Cue")]
     [SerializeField] private GameObject visualCue;
@@ -42,7 +42,15 @@ public class DialogeTrigger : MonoBehaviour
             {
                 if (InputManager.GetInstance().GetInteractPressed())
                 {
-                    Debug.Log(inkJSON.text);
+                    if (player.CompareTag("Player1")){
+                        p1move movescript= player.GetComponent<p1move>();
+                        movescript.canMove = false;
+
+                    }else {
+                        p2move movescript= player.GetComponent<p2move>();
+                        movescript.canMove = false;
+                    }
+                    DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
                 }
             }
         }

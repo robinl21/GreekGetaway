@@ -12,6 +12,8 @@ public class p1move : MonoBehaviour
     private Rigidbody2D rb = null; // attach velocity to move
     public float moveSpeed;
 
+    public bool canMove = true; 
+
     private void Awake()
     {
         p1movement = this;
@@ -47,7 +49,10 @@ public class p1move : MonoBehaviour
     {
         // InputAction.CallbackContext value gives Vector2 based on direction, set by PlayerControls InputMap
         // left is [-1, 0] for ex
-        moveVector = value.ReadValue<Vector2>();
+        if (canMove){
+            moveVector = value.ReadValue<Vector2>();
+        }
+        
 
     }
 

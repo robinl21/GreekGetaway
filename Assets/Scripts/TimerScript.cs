@@ -18,7 +18,10 @@ public class TimerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        totalTime -= Time.deltaTime;
+        if (totalTime > 0.0f)
+        {
+            totalTime -= Time.deltaTime;
+        }
         float minutes = Mathf.FloorToInt(totalTime / 60);  
         float seconds = Mathf.FloorToInt(totalTime % 60);
         timerVisual.text = string.Format("{0:00}:{1:00}", minutes, seconds);

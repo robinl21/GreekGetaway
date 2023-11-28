@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DialogueTrigger : MonoBehaviour
+public class DialogeTrigger : MonoBehaviour
 {
     [Header("Visual Cue")]
     [SerializeField] private GameObject visualCue;
@@ -40,24 +40,29 @@ public class DialogueTrigger : MonoBehaviour
             visualCue.SetActive(true);
             foreach (var player in playersInZone)
             {
-                if (player.CompareTag("Player1")){
-                    if (InputManager.GetInstance().GetInteractPressed()){
-                        p1move movescript= player.GetComponent<p1move>();
-                        movescript.canMove = false;
+                if (player.CompareTag("Player1")) {
+                    if (InputManager.GetInstance().GetInteractPressed() && !DialogueManager.GetInstance().dialogueIsPlaying1) {
+                        Debug.Log("RUN PLAYER1");
                         DialogueManager.GetInstance().EnterDialogueMode(inkJSON, true);
                     }
-                    }
+                }
 
-                else {
-                    if (InputManager1.GetInstance().GetInteractPressed()){
-                        p2move movescript = player.GetComponent<p2move>();
-                        movescript.canMove = false;
-                        DialogueManager.GetInstance().EnterDialogueMode(inkJSON, false);
+                if (player.CompareTag("Player2")) {
+                    if (InputManager1.GetInstance().GetInteractPressed() && !DialogueManager.GetInstance().dialogueIsPlaying2) {
+                        Debug.Log("RUN PLAYER2");
+                        DialogueManager.GetInstance().EnterDialogueMode(inkJSON, false); // player 2
                     }
                 }
                 
-               
-                
+                // if (InputManager.GetInstance().GetInteractPressed() && player.CompareTag("Player1"))
+                // {
+                //     Debug.Log("Player 1 triggered");
+                // }
+
+                // if (InputManager1.GetInstance().GetInteractPressed() && player.CompareTag("Player2"))
+                // {
+                //     Debug.Log("Player 2 triggered");
+                // }
             }
         }
         else

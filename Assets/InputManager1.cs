@@ -38,7 +38,6 @@ public class InputManager1 : MonoBehaviour
     {
         if (context.performed)
         {
-            Debug.Log("hello");
             interactPressed = true;
         }
         else if (context.canceled)

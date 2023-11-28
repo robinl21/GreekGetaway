@@ -10,8 +10,12 @@ public class p2move : MonoBehaviour
     private PlayerControls input = null; // set from PlayerControls InputMap in scripts
     private Vector2 moveVector = Vector2.zero;
     private Rigidbody2D rb = null; // attach velocity to move
+
+    private float drunkCountdownTimer = 30.0f;
     public float moveSpeed;
     public bool canMove = true; 
+
+    public bool isDrunk = false;
 
     public GameObject questLog;
     private void Awake()
@@ -44,6 +48,14 @@ public class p2move : MonoBehaviour
     private void FixedUpdate()
     {
         rb.velocity = moveVector * moveSpeed;
+
+        // Make the player drunk when a certain time has passed.
+        drunkCountdownTimer -= Time.deltaTime;
+        if (drunkCountdownTimer <= 0) 
+        {
+            isDrunk = true;
+            Debug.Log("Is now Drunk");
+        }
     }
 
     //meat of the movement code: 
@@ -51,14 +63,25 @@ public class p2move : MonoBehaviour
     {
         // InputAction.CallbackContext value gives Vector2 based on direction, set by PlayerControls InputMap
         // left is [-1, 0] for ex
-        if (canMove){
-        moveVector = value.ReadValue<Vector2>();}
+        if (canMove) {
+            Vector2 inputVector = value.ReadValue<Vector2>();
+            float x = inputVector.x;
+            float y = inputVector.y;
+            if (isDrunk)
+            {
+                x = x * -1;
+                y = y * -1;
+            }
+
+            moveVector = new Vector2(x, y);
+        }
 
     }
 
     private void OnMovementCancelled(InputAction.CallbackContext value)
     {   // stops player
         moveVector = Vector2.zero;
+
     }
 
 

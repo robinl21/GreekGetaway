@@ -1,7 +1,6 @@
-Once upon a time...
+Hey! Have you lost your jacket?
 -> slide2
 
 === slide2 ===
-Attempt
-They lived happily ever after.
+I think someone stole it on the second floor.
     -> END

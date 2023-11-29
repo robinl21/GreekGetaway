@@ -44,6 +44,10 @@ public class DialogeTriggerJacket : MonoBehaviour
                     if (InputManager.GetInstance().GetInteractPressed() && !DialogueManager.GetInstance().dialogueIsPlaying1) {
                         Debug.Log("RUN PLAYER1");
                         DialogueManager.GetInstance().EnterDialogueMode(inkJSON, true);
+
+                        // jacketDone true: dialogues now "finished" dialogues
+                        JacketTaskController.jacketTask.jacketDone = true;
+                        // TODO: JACKET DISAPPEAR
                     }
                 }
 
@@ -51,6 +55,10 @@ public class DialogeTriggerJacket : MonoBehaviour
                     if (InputManager1.GetInstance().GetInteractPressed() && !DialogueManager.GetInstance().dialogueIsPlaying2) {
                         Debug.Log("RUN PLAYER2");
                         DialogueManager.GetInstance().EnterDialogueMode(inkJSON, false); // player 2
+
+                        // jacketDone true: dialogues now "finished" dialogues
+                        JacketTaskController.jacketTask.jacketDone = true;
+                        // TODO: JACKET DISAPPEAR
                     }
                 }
                 

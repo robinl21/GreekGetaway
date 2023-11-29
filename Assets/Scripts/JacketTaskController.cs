@@ -8,7 +8,8 @@ public class JacketTaskController : MonoBehaviour
     // talk to dude -> jacket appears!
     public static JacketTaskController jacketTask;
 
-    public bool allDone = false;
+    public bool activateJacket = false; //activates jacket -> ActivateJacket.cs
+    public bool jacketDone = false; // sets to finish dialogues + checks whether to activate  -> DialogueTriggerDude.cs, DialogueTriggerJacket.cs
 
     void Awake() {
         jacketTask = this;

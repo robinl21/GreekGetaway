@@ -7,9 +7,13 @@ public class DialogeTriggerDude : MonoBehaviour
     [Header("Visual Cue")]
     [SerializeField] private GameObject visualCue;
 
-    [Header("Ink JSON")]
-    [SerializeField] private TextAsset inkJSON; 
+    [Header("Ink JSON Active")]
+    [SerializeField] private TextAsset inkJSONActive; 
 
+    [Header("Ink JSON Finish")]
+    [SerializeField] private TextAsset inkJSONFinish; 
+
+    private TextAsset curInkJSON;
     private List<Collider2D> playersInZone = new List<Collider2D>();
 
     private void Awake()
@@ -35,6 +39,13 @@ public class DialogeTriggerDude : MonoBehaviour
 
     private void Update()
     {
+        if (JacketTaskController.jacketTask.jacketDone) { //if done, changes dialogue
+            curInkJSON = inkJSONFinish;
+        }
+        else {
+            curInkJSON = inkJSONActive;
+        }
+
         if (playersInZone.Count > 0)
         {
             visualCue.SetActive(true);
@@ -43,14 +54,26 @@ public class DialogeTriggerDude : MonoBehaviour
                 if (player.CompareTag("Player1")) {
                     if (InputManager.GetInstance().GetInteractPressed() && !DialogueManager.GetInstance().dialogueIsPlaying1) {
                         Debug.Log("RUN PLAYER1");
-                        DialogueManager.GetInstance().EnterDialogueMode(inkJSON, true);
+                        DialogueManager.GetInstance().EnterDialogueMode(curInkJSON, true);
+
+                        // jacket quest activated if not done
+                        if (!JacketTaskController.jacketTask.jacketDone) {
+                            JacketTaskController.jacketTask.activateJacket = true;
+                        }
+
+
                     }
                 }
 
                 if (player.CompareTag("Player2")) {
                     if (InputManager1.GetInstance().GetInteractPressed() && !DialogueManager.GetInstance().dialogueIsPlaying2) {
                         Debug.Log("RUN PLAYER2");
-                        DialogueManager.GetInstance().EnterDialogueMode(inkJSON, false); // player 2
+                        DialogueManager.GetInstance().EnterDialogueMode(curInkJSON, false); // player 2
+                        
+                        // jacket quest activated if not done
+                        if (!JacketTaskController.jacketTask.jacketDone) {
+                            JacketTaskController.jacketTask.activateJacket = true;
+                        }
                     }
                 }
                 

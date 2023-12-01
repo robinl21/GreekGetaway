@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using Ink.Runtime;
 using UnityEngine.EventSystems;
+using System;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -24,10 +25,21 @@ public class DialogueManager : MonoBehaviour
     public bool dialogueIsPlaying1 { get; private set; }
     public bool dialogueIsPlaying2 { get; private set; }
 
+    public static event Action standardCallback; //callbacks at end of dialogue! Functions defined in other classes can turn into actions to be called (pointers preserved from that class too)
+
+    // MAKE SURE TO RESET CALLBACK AFTER EXITING DIALOGUE MODE
+    public static event Action p1Callback = standardCallback;
+    public static event Action p2Callback = standardCallback;
+
     private static DialogueManager instance;
 
+    private void DoNothing() {
+
+    }
+
     private void Awake()
-    {
+    {   
+        standardCallback = DoNothing;
         if (instance != null)
         {
             Debug.LogWarning("Found more than two Dialogue Managers in the scene");
@@ -85,11 +97,13 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void EnterDialogueMode(TextAsset inkJSON, bool isPlayer1)
+    public void EnterDialogueMode(TextAsset inkJSON, bool isPlayer1, Action callbackFunc = null)
     {
-        
+        Action curCallbackFunc = callbackFunc ?? standardCallback;
         if (isPlayer1)
         {
+            p1Callback = curCallbackFunc; // callback when p1 done speaking.
+
             //freeze player
             p1move p1MoveScript = GameObject.FindGameObjectWithTag("Player1").GetComponent<p1move>();
             p1MoveScript.canMove = false;
@@ -103,6 +117,8 @@ public class DialogueManager : MonoBehaviour
         else
         {
             //freeze player
+            p2Callback = curCallbackFunc; // callback when p2 done speaking
+
             p2move p2MoveScript = GameObject.FindGameObjectWithTag("Player2").GetComponent<p2move>();
             p2MoveScript.canMove = false;
 
@@ -116,21 +132,35 @@ public class DialogueManager : MonoBehaviour
 
     private IEnumerator ExitDialogueMode(bool isPlayer1)
     {
+
         yield return new WaitForSeconds(0.2f);
 
         if (isPlayer1){
+
             dialogueIsPlaying1 = false;
             p1DialoguePanel.SetActive(false);
             p1DialogueText.text = "";
             p1move p1MoveScript = GameObject.FindGameObjectWithTag("Player1").GetComponent<p1move>();
             p1MoveScript.canMove = true;
+
+            Action curCallbackFunc = p1Callback ?? standardCallback; // runs player 1 callback
+            curCallbackFunc.Invoke();
+
+            p1Callback = null; // IMPORTANT: RESETS 
+            
         } else {
             dialogueIsPlaying2 = false;
             p2DialoguePanel.SetActive(false);
             p2DialogueText.text = "";
             p2move p2MoveScript = GameObject.FindGameObjectWithTag("Player2").GetComponent<p2move>();
             p2MoveScript.canMove = true;
+
+            Action curCallbackFunc = p2Callback ?? standardCallback;
+            curCallbackFunc.Invoke();
+
+            p2Callback = null;
         }
+
 
         // Enable player movement for both players here if needed
     }
@@ -146,7 +176,7 @@ public class DialogueManager : MonoBehaviour
             }
             else
             {
-                StartCoroutine(ExitDialogueMode(isPlayer1));
+                StartCoroutine(ExitDialogueMode(true)); // is player 1
             }
         }
         else
@@ -158,7 +188,7 @@ public class DialogueManager : MonoBehaviour
             }
             else
             {
-                StartCoroutine(ExitDialogueMode(isPlayer1));
+                StartCoroutine(ExitDialogueMode(false)); // is player 2
             }
         }
     }

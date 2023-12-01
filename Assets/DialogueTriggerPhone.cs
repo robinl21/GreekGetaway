@@ -1,24 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class DialogeTriggerJacket : MonoBehaviour
+using System;
+public class DialogeTriggerPhone : MonoBehaviour
 {
     [Header("Visual Cue")]
     [SerializeField] private GameObject visualCue;
 
     [Header("Ink JSON Active")]
-    [SerializeField] private TextAsset inkJSONActive; 
+    [SerializeField] private TextAsset inkJSON; 
 
-    [Header("Ink JSON Finish")]
-    [SerializeField] private TextAsset inkJSONFinish; 
+    [Header("Parent Object")]
+    [SerializeField] private GameObject phone;
 
-    private TextAsset curInkJSON;
 
     private List<Collider2D> playersInZone = new List<Collider2D>();
 
     private void Awake()
-    {
+    {   
         visualCue.SetActive(false);
     }
 
@@ -38,41 +37,44 @@ public class DialogeTriggerJacket : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
+    public void DestroyPhone() {
+        phone.SetActive(false);
+    }
+
+    private void Update() // upon pickup, set allDone to True for phone task!
+    {   
+        
         if (playersInZone.Count > 0)
         {
             visualCue.SetActive(true);
             foreach (var player in playersInZone)
             {   
-                //finished jacket task
-                if (JacketTaskController.jacketTask.jacketDone) {
-                    curInkJSON = inkJSONFinish;
-                    //
-                }
-                else {
-                    curInkJSON = inkJSONActive;
-                }
-
+                Action destroyCallback = DestroyPhone;
                 if (player.CompareTag("Player1")) {
                     if (InputManager.GetInstance().GetInteractPressed() && !DialogueManager.GetInstance().dialogueIsPlaying1) {
-                        Debug.Log("RUN PLAYER1");
-                        DialogueManager.GetInstance().EnterDialogueMode(curInkJSON, true);
 
-                        // jacketDone true: dialogues now "finished" dialogues
-                        JacketTaskController.jacketTask.jacketDone = true;
-                        // TODO: JACKET DISAPPEAR
+
+                        DialogueManager.GetInstance().EnterDialogueMode(inkJSON, true, destroyCallback);
+
+                        // get phone: quest done!
+                        p1move.p1movement.hasPhone = true;
+                        PhoneTaskController.phoneTask.allDone = true;
+
+
                     }
                 }
 
                 if (player.CompareTag("Player2")) {
                     if (InputManager1.GetInstance().GetInteractPressed() && !DialogueManager.GetInstance().dialogueIsPlaying2) {
                         Debug.Log("RUN PLAYER2");
-                        DialogueManager.GetInstance().EnterDialogueMode(curInkJSON, false); // player 2
+                        DialogueManager.GetInstance().EnterDialogueMode(inkJSON, false, destroyCallback); // player 2
 
-                        // jacketDone true: dialogues now "finished" dialogues
-                        JacketTaskController.jacketTask.jacketDone = true;
-                        // TODO: JACKET DISAPPEAR
+                        
+
+                        // get phone: quest done!
+                        p2move.p2movement.hasPhone = true;
+                        PhoneTaskController.phoneTask.allDone = true;
+
                     }
                 }
                 

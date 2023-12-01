@@ -2,18 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DialogeTriggerJacket : MonoBehaviour
+public class DialogeTriggerBartender : MonoBehaviour
 {
     [Header("Visual Cue")]
     [SerializeField] private GameObject visualCue;
 
     [Header("Ink JSON Active")]
-    [SerializeField] private TextAsset inkJSONActive; 
-
-    [Header("Ink JSON Finish")]
-    [SerializeField] private TextAsset inkJSONFinish; 
-
-    private TextAsset curInkJSON;
+    [SerializeField] private TextAsset inkJSON; 
 
     private List<Collider2D> playersInZone = new List<Collider2D>();
 
@@ -45,34 +40,26 @@ public class DialogeTriggerJacket : MonoBehaviour
             visualCue.SetActive(true);
             foreach (var player in playersInZone)
             {   
-                //finished jacket task
-                if (JacketTaskController.jacketTask.jacketDone) {
-                    curInkJSON = inkJSONFinish;
-                    //
-                }
-                else {
-                    curInkJSON = inkJSONActive;
-                }
 
                 if (player.CompareTag("Player1")) {
                     if (InputManager.GetInstance().GetInteractPressed() && !DialogueManager.GetInstance().dialogueIsPlaying1) {
-                        Debug.Log("RUN PLAYER1");
-                        DialogueManager.GetInstance().EnterDialogueMode(curInkJSON, true);
 
-                        // jacketDone true: dialogues now "finished" dialogues
-                        JacketTaskController.jacketTask.jacketDone = true;
-                        // TODO: JACKET DISAPPEAR
+                        DialogueManager.GetInstance().EnterDialogueMode(inkJSON, true);
+
+                        // give drink
+                        p1move.p1movement.hasDrink = true;
+
                     }
                 }
 
                 if (player.CompareTag("Player2")) {
                     if (InputManager1.GetInstance().GetInteractPressed() && !DialogueManager.GetInstance().dialogueIsPlaying2) {
                         Debug.Log("RUN PLAYER2");
-                        DialogueManager.GetInstance().EnterDialogueMode(curInkJSON, false); // player 2
+                        DialogueManager.GetInstance().EnterDialogueMode(inkJSON, false); // player 2
 
-                        // jacketDone true: dialogues now "finished" dialogues
-                        JacketTaskController.jacketTask.jacketDone = true;
-                        // TODO: JACKET DISAPPEAR
+                        
+                        // give drink
+                        p2move.p2movement.hasDrink = true;
                     }
                 }
                 

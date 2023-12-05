@@ -478,6 +478,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+  NPC: {fileID: 834614880}
+  Trigger: {fileID: 2014923368}
 --- !u!1 &1169510987
 GameObject:
   m_ObjectHideFlags: 0

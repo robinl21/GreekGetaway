@@ -20,7 +20,7 @@ public class ActivateJacket : MonoBehaviour
     void Update()
     {
         isActive = JacketTaskController.jacketTask.activateJacket;
-        Debug.Log("ISACTIVE" + isActive);
+        
         this.NPC.SetActive(isActive);
         this.Trigger.SetActive(isActive);
 

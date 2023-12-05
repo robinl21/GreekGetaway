@@ -18,6 +18,8 @@ public class p1move : MonoBehaviour
 
     public bool canMove = true; 
 
+    public Inventory inventory; 
+
     public GameObject questLog;
     private void Awake()
     {
@@ -36,6 +38,14 @@ public class p1move : MonoBehaviour
 
         input.P1.QuestLog.performed += OnQuestLogPerformed;
     }
+    private void OnTriggerEnter2D(Collider2D other) {
+        Debug.Log("ISACTIVE");
+        IInventoryItem item = other.GetComponent<IInventoryItem>();
+        if (item != null) {
+            inventory.AddItem(item);
+        }
+    }
+    
 
     private void OnDisable()
     {

@@ -206,7 +206,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 262522476}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99999976
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -467,54 +467,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2697747628932835008, guid: 85e76bf1b69e18e4eb0173780d589c95, type: 3}
   m_PrefabInstance: {fileID: 2003209941}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &185510910
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 185510912}
-  - component: {fileID: 185510911}
-  m_Layer: 0
-  m_Name: DialogueScripts
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &185510911
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 185510910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e7f1b92fade66740ae3f2148c64aff5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftDialoguePanel: {fileID: 1126111362}
-  rightDialoguePanel: {fileID: 1509103673}
-  leftText: {fileID: 151211491}
-  rightText: {fileID: 817314690}
---- !u!4 &185510912
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 185510910}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &262522475
 GameObject:
   m_ObjectHideFlags: 0
@@ -1610,7 +1562,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 432066701}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.29857293
+  m_Size: 0.38924897
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2458,7 +2410,7 @@ MonoBehaviour:
   m_text: Taking the Stairs...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 87e6cee7a8d77ad4a9d38703681c20de, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 4590480821352586239, guid: 87e6cee7a8d77ad4a9d38703681c20de, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2521,7 +2473,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1188172045
@@ -3250,7 +3202,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 238.89992}
+  m_AnchoredPosition: {x: 0, y: 311.49997}
   m_SizeDelta: {x: 0, y: 800}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1472233450
@@ -3365,7 +3317,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 238.89992}
+  m_AnchoredPosition: {x: 0, y: 311.49997}
   m_SizeDelta: {x: 0, y: 800}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1477010442
@@ -3492,7 +3444,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1519126597}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.29857293
+  m_Size: 0.38924897
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4950,7 +4902,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1173364710}
-  - {fileID: 185510912}
   - {fileID: 1258115146}
   - {fileID: 1596156979}
   - {fileID: 1608910919}

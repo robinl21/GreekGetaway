@@ -21,6 +21,15 @@ public class p2move : MonoBehaviour
 
     public GameObject questLog;
     
+
+    // temporary inventory bools
+    // #####################
+    public bool hasPizza = false;
+
+    public bool hasPhone = false;
+
+    public bool hasDrink = false;
+    // ###################
     private void Awake()
     {
         p2movement = this;

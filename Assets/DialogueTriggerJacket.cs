@@ -7,8 +7,13 @@ public class DialogeTriggerJacket : MonoBehaviour
     [Header("Visual Cue")]
     [SerializeField] private GameObject visualCue;
 
-    [Header("Ink JSON")]
-    [SerializeField] private TextAsset inkJSON; 
+    [Header("Ink JSON Active")]
+    [SerializeField] private TextAsset inkJSONActive; 
+
+    [Header("Ink JSON Finish")]
+    [SerializeField] private TextAsset inkJSONFinish; 
+
+    private TextAsset curInkJSON;
 
     private List<Collider2D> playersInZone = new List<Collider2D>();
 
@@ -39,11 +44,20 @@ public class DialogeTriggerJacket : MonoBehaviour
         {
             visualCue.SetActive(true);
             foreach (var player in playersInZone)
-            {
+            {   
+                //finished jacket task
+                if (JacketTaskController.jacketTask.jacketDone) {
+                    curInkJSON = inkJSONFinish;
+                    //
+                }
+                else {
+                    curInkJSON = inkJSONActive;
+                }
+
                 if (player.CompareTag("Player1")) {
                     if (InputManager.GetInstance().GetInteractPressed() && !DialogueManager.GetInstance().dialogueIsPlaying1) {
                         Debug.Log("RUN PLAYER1");
-                        DialogueManager.GetInstance().EnterDialogueMode(inkJSON, true);
+                        DialogueManager.GetInstance().EnterDialogueMode(curInkJSON, true);
 
                         // jacketDone true: dialogues now "finished" dialogues
                         JacketTaskController.jacketTask.jacketDone = true;
@@ -54,7 +68,7 @@ public class DialogeTriggerJacket : MonoBehaviour
                 if (player.CompareTag("Player2")) {
                     if (InputManager1.GetInstance().GetInteractPressed() && !DialogueManager.GetInstance().dialogueIsPlaying2) {
                         Debug.Log("RUN PLAYER2");
-                        DialogueManager.GetInstance().EnterDialogueMode(inkJSON, false); // player 2
+                        DialogueManager.GetInstance().EnterDialogueMode(curInkJSON, false); // player 2
 
                         // jacketDone true: dialogues now "finished" dialogues
                         JacketTaskController.jacketTask.jacketDone = true;

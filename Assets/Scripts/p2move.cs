@@ -17,7 +17,10 @@ public class p2move : MonoBehaviour
 
     public bool isDrunk = false;
 
+    public Inventory2 inventory; 
+
     public GameObject questLog;
+    
 
     // temporary inventory bools
     // #####################
@@ -33,6 +36,14 @@ public class p2move : MonoBehaviour
         moveSpeed = 10f;
         input = new PlayerControls();
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        Debug.Log("ISACTIVE");
+        IInventoryItem item = other.GetComponent<IInventoryItem>();
+        if (item != null) {
+            inventory.AddItem2(item);
+        }
     }
 
     private void OnEnable()
@@ -92,7 +103,6 @@ public class p2move : MonoBehaviour
         moveVector = Vector2.zero;
 
     }
-
 
     private void OnQuestLogPerformed(InputAction.CallbackContext value) {
         bool isActive = this.questLog.activeSelf;

@@ -26,6 +26,8 @@ public class p2move : MonoBehaviour
     public bool hasPhone = false;
 
     public bool hasDrink = false;
+
+    public bool metJeff = false;
     // ###################
     private void Awake()
     {

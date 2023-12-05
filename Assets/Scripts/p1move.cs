@@ -22,6 +22,8 @@ public class p1move : MonoBehaviour
     public bool hasPhone = false;
 
     public bool hasDrink = false;
+
+    public bool metJeff = false;
     // ###################
 
     public GameObject questLog;

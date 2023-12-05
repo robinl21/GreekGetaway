@@ -1,0 +1,1 @@
+﻿{"inkVersion":21,"root":[["^Do you know a brother?","\n",{"->":"slide2"},["done",{"#f":5,"#n":"g-0"}],null],"done",{"slide2":["^No? Sorry, but I can't let you up.","\n",{"->":"slide3"},{"#f":1}],"slide3":["^Maybe Jeff can help you out.","\n","end",{"#f":1}],"#f":1}],"listDefs":{}}

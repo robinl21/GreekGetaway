@@ -173,11 +173,37 @@ Tilemap:
   m_GameObject: {fileID: 7115484835790969086}
   m_Enabled: 1
   m_Tiles:
+  - first: {x: -33, y: -4, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 17
+      m_TileSpriteIndex: 16
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: -33, y: -3, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 16
+      m_TileSpriteIndex: 14
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 4
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741827
   - first: {x: -28, y: -3, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 10
+<<<<<<< HEAD
       m_TileSpriteIndex: 16
+||||||| parent of 6b003d3 (flfoor 1)
+      m_TileSpriteIndex: 14
+=======
+      m_TileSpriteIndex: 15
+>>>>>>> 6b003d3 (flfoor 1)
       m_TileMatrixIndex: 0
       m_TileColorIndex: 5
       m_TileObjectToInstantiateIndex: 65535
@@ -217,7 +243,13 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 10
+<<<<<<< HEAD
       m_TileSpriteIndex: 16
+||||||| parent of 6b003d3 (flfoor 1)
+      m_TileSpriteIndex: 14
+=======
+      m_TileSpriteIndex: 15
+>>>>>>> 6b003d3 (flfoor 1)
       m_TileMatrixIndex: 0
       m_TileColorIndex: 5
       m_TileObjectToInstantiateIndex: 65535
@@ -297,7 +329,13 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 10
+<<<<<<< HEAD
       m_TileSpriteIndex: 16
+||||||| parent of 6b003d3 (flfoor 1)
+      m_TileSpriteIndex: 14
+=======
+      m_TileSpriteIndex: 15
+>>>>>>> 6b003d3 (flfoor 1)
       m_TileMatrixIndex: 0
       m_TileColorIndex: 5
       m_TileObjectToInstantiateIndex: 65535
@@ -417,12 +455,20 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: db0950451cfc4544a870ad1de3ff218d, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: e11616ba23d091a4a88140fd9eb0b4c3, type: 2}
+<<<<<<< HEAD
   - m_RefCount: 1
     m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 86e095b01e34c684592981e745fb41cf, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 13548895ba7ba8d40b616a6259f5a82f, type: 2}
+||||||| parent of 6b003d3 (flfoor 1)
+=======
+  - m_RefCount: 1
+    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 3d0962f6a81f14b12ab0858fd60860e0, type: 2}
+>>>>>>> 6b003d3 (flfoor 1)
   m_TileSpriteArray:
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 13ee2c3797b736248a467f00fd03cfdb, type: 3}
@@ -447,19 +493,33 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 8edd3b85f5e44c14dbaa80387de489b1, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: dcfd0c0848437454f982c5ed44716679, type: 3}
+    m_Data: {fileID: 21300000, guid: 8220b789245844640b87c4dd8e448281, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 979487aa918e83b4aa73ba3022f2fadb, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 0}
   - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: 8edd3b85f5e44c14dbaa80387de489b1, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: dcfd0c0848437454f982c5ed44716679, type: 3}
+  - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 188bbd640c9afce45acffb2757aa4cec, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: ef3e258c908fb6e46ab2175e4dd6d98c, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 0}
   - m_RefCount: 3
     m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: 979487aa918e83b4aa73ba3022f2fadb, type: 3}
   m_TileMatrixArray:
+<<<<<<< HEAD
   - m_RefCount: 21
+||||||| parent of 6b003d3 (flfoor 1)
+  - m_RefCount: 18
+=======
+  - m_RefCount: 20
+>>>>>>> 6b003d3 (flfoor 1)
     m_Data:
       e00: 1
       e01: 0
@@ -478,23 +538,65 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
+<<<<<<< HEAD
   - m_RefCount: 14
+||||||| parent of 6b003d3 (flfoor 1)
+  - m_RefCount: 12
+=======
+  - m_RefCount: 13
+>>>>>>> 6b003d3 (flfoor 1)
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   - m_RefCount: 1
+<<<<<<< HEAD
     m_Data: {r: 0.87610406, g: 0.49417898, b: 0.56012064, a: 1}
+||||||| parent of 6b003d3 (flfoor 1)
+    m_Data: {r: 0.71056783, g: 0.35120976, b: 0.45360807, a: 1}
+=======
+    m_Data: {r: 0.927823, g: 0.6388754, b: 0.6467146, a: 1}
+>>>>>>> 6b003d3 (flfoor 1)
   - m_RefCount: 1
+<<<<<<< HEAD
     m_Data: {r: 0.733935, g: 0.503314, b: 0.51997054, a: 1}
+||||||| parent of 6b003d3 (flfoor 1)
+    m_Data: {r: 0.97303426, g: 0.5233998, b: 0.5359234, a: 1}
+=======
+    m_Data: {r: 0.9163038, g: 0.635043, b: 0.72600853, a: 1}
+>>>>>>> 6b003d3 (flfoor 1)
   - m_RefCount: 1
+<<<<<<< HEAD
     m_Data: {r: 0.8533456, g: 0.41108257, b: 0.41161314, a: 1}
   - m_RefCount: 1
     m_Data: {r: 0.78401417, g: 0.44422773, b: 0.5329219, a: 1}
+||||||| parent of 6b003d3 (flfoor 1)
+    m_Data: {r: 0.88776326, g: 0.47753474, b: 0.5130333, a: 1}
+  - m_RefCount: 0
+    m_Data: {r: NaN, g: NaN, b: NaN, a: NaN}
+=======
+    m_Data: {r: 0.9431011, g: 0.58025897, b: 0.67452824, a: 1}
+  - m_RefCount: 1
+    m_Data: {r: 0.7227992, g: 0.41216695, b: 0.5119633, a: 1}
+>>>>>>> 6b003d3 (flfoor 1)
   - m_RefCount: 3
+<<<<<<< HEAD
     m_Data: {r: 0.97268486, g: 0.50379884, b: 0.5863396, a: 1}
+||||||| parent of 6b003d3 (flfoor 1)
+    m_Data: {r: 0.9368999, g: 0.3887703, b: 0.47174358, a: 1}
+=======
+    m_Data: {r: 0.7471559, g: 0.43728074, b: 0.48086286, a: 1}
+>>>>>>> 6b003d3 (flfoor 1)
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+<<<<<<< HEAD
   m_Origin: {x: -36, y: -3, z: 0}
   m_Size: {x: 22, y: 8, z: 1}
+||||||| parent of 6b003d3 (flfoor 1)
+  m_Origin: {x: -33, y: -3, z: 0}
+  m_Size: {x: 19, y: 8, z: 1}
+=======
+  m_Origin: {x: -33, y: -4, z: 0}
+  m_Size: {x: 19, y: 9, z: 1}
+>>>>>>> 6b003d3 (flfoor 1)
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -647,7 +749,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+<<<<<<< HEAD
 --- !u!114 &4217223023133545091
+||||||| parent of 6b003d3 (flfoor 1)
+--- !u!114 &4643472985891632292
+=======
+--- !u!114 &8148958425039245640
+>>>>>>> 6b003d3 (flfoor 1)
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

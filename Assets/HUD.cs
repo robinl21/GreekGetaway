@@ -35,8 +35,16 @@ public class HUD : MonoBehaviour
 
     private void InventoryScript_ItemDropped(object sender, IInventoryEventArgs e) {
         Transform inventoryPanel = transform.Find("Inventory");
-        Transform[] ts = inventoryPanel.GetComponentsInChildren<Transform>();
-        Transform slot = ts[e.Index+1]; //getcomponents includes itself
+        int counter = 0;
+        Transform slot = null;
+        foreach(Transform slt in inventoryPanel) {
+            if (counter == e.Index) {
+                slot = slt;
+                break;
+            }
+            counter += 1;
+        }
+        Debug.Log("index" + e);
         Debug.Log("Slot: Drop" + slot.name);
         Image image = slot.GetChild(0).GetChild(0).GetComponent<Image>();
         Debug.Log("Image: Drop" + image.name);

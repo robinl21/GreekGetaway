@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class DialogeTriggerBartender : MonoBehaviour
+using System;
+public class DialogueTriggerDrink : MonoBehaviour
 {
     [Header("Visual Cue")]
     [SerializeField] private GameObject visualCue;
@@ -10,11 +10,16 @@ public class DialogeTriggerBartender : MonoBehaviour
     [Header("Ink JSON Active")]
     [SerializeField] private TextAsset inkJSON; 
 
+    [Header("Parent Object")]
+    [SerializeField] private GameObject drink; // header object
+
+    private Inventory inventory1;
+    private Inventory2 inventory2;
+
     private List<Collider2D> playersInZone = new List<Collider2D>();
 
-    public GameObject drinkTemplate;
     private void Awake()
-    {
+    {   
         visualCue.SetActive(false);
     }
 
@@ -34,26 +39,39 @@ public class DialogeTriggerBartender : MonoBehaviour
         }
     }
 
-    private void CreateDrink() {
-        GameObject drink = (GameObject)Instantiate(drinkTemplate);
-        drink.SetActive(true);
-        
+    // after speaking, add header item
+    public void PickUpDrinkP1() {
+        IInventoryItem item = drink.GetComponent<IInventoryItem>();
+        inventory1 = Inventory.inventory;
+        inventory1.AddItem(item);
     }
+
+    public void PickUpDrinkP2() {
+        Debug.Log(
+            "Entered PickUpPizzaP2"
+        );
+        IInventoryItem item = drink.GetComponent<IInventoryItem>();
+        inventory2 = Inventory2.inventory2;
+        inventory2.AddItem2(item);
+    }
+
+
     private void Update()
-    {
+    {   
+        
         if (playersInZone.Count > 0)
         {
             visualCue.SetActive(true);
             foreach (var player in playersInZone)
             {   
-
                 if (player.CompareTag("Player1")) {
                     if (InputManager.GetInstance().GetInteractPressed() && !DialogueManager.GetInstance().dialogueIsPlaying1) {
 
-                        DialogueManager.GetInstance().EnterDialogueMode(inkJSON, true, CreateDrink);
 
-                        // give drink
-                        
+                        DialogueManager.GetInstance().EnterDialogueMode(inkJSON, true, PickUpDrinkP1);
+
+                        // get drink
+
 
                     }
                 }
@@ -61,9 +79,9 @@ public class DialogeTriggerBartender : MonoBehaviour
                 if (player.CompareTag("Player2")) {
                     if (InputManager1.GetInstance().GetInteractPressed() && !DialogueManager.GetInstance().dialogueIsPlaying2) {
                         Debug.Log("RUN PLAYER2");
-                        DialogueManager.GetInstance().EnterDialogueMode(inkJSON, false, CreateDrink); // player 2
+                        DialogueManager.GetInstance().EnterDialogueMode(inkJSON, false, PickUpDrinkP2); // player 2
 
-                        
+
                     }
                 }
                 

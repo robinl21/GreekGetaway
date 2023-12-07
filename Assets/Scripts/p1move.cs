@@ -18,12 +18,7 @@ public class p1move : MonoBehaviour
 
     // temporary inventory bools
     // #####################
-    public bool hasPizza = false;
-
     public bool hasPhone = false;
-
-    public bool hasDrink = false;
-
     public bool metJeff = false;
     // ###################
 

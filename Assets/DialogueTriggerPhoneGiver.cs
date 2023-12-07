@@ -74,11 +74,14 @@ public class DialogueTriggerPhoneGiver : MonoBehaviour
                         }
 
                         else if (phoneTask.pizzaStage) {
-                            if (p1move.p1movement.hasPizza) {
+                            if (Inventory.inventory.HasItem("Pizza")) {
                                 // move to next stage:
                                 phoneTask.pizzaStage = false;
                                 phoneTask.drinkStage = true;
                                 curInkJSON = inkJSONPizza; // "thanks for pizza. now get drink"
+
+                                // need to destroy item
+                                Inventory.inventory.DestroyItem("Pizza");
                             }
                             else {
                                 // stay in current stage:
@@ -88,12 +91,15 @@ public class DialogueTriggerPhoneGiver : MonoBehaviour
 
 
                         else if (phoneTask.drinkStage) {
-                            if (p1move.p1movement.hasDrink) {
+                            if (Inventory.inventory.HasItem("Drink")) {
                                 // move to next stage:
                                 phoneTask.drinkStage = false;
                                 phoneTask.phoneStage = true;
                                 curInkJSON = inkJSONDrink; // "drink was good. your phone is here": set phone to active! 
                                 Debug.Log("ACTIVATE");
+
+                                //destroy drink item
+                                Inventory.inventory.DestroyItem("Drink");
                                 callBackAction = SetActivePhone;
                             }
                             else {
@@ -105,7 +111,7 @@ public class DialogueTriggerPhoneGiver : MonoBehaviour
 
                         else if (phoneTask.phoneStage) {
 
-                            if (phoneTask.allDone) { // someone got phone
+                            if (phoneTask.allDone) { // someone got phone: set to allDone (not in inventory)
                                 phoneTask.phoneStage = false;
                                 phoneTask.finishStage = true;
                                 curInkJSON = inkJSONFinish; // done!
@@ -139,11 +145,14 @@ public class DialogueTriggerPhoneGiver : MonoBehaviour
                         }
 
                         else if (phoneTask.pizzaStage) {
-                            if (p2move.p2movement.hasPizza) {
+                            if (Inventory2.inventory2.HasItem("Pizza")) {
                                 // move to next stage:
                                 phoneTask.pizzaStage = false;
                                 phoneTask.drinkStage = true;
                                 curInkJSON = inkJSONPizza; // "thanks for pizza. now get drink"
+
+                                // need to destroy item pizza
+                                Inventory2.inventory2.DestroyItem("Pizza");
                             }
                             else {
                                 // stay in current stage:
@@ -153,12 +162,16 @@ public class DialogueTriggerPhoneGiver : MonoBehaviour
 
 
                         else if (phoneTask.drinkStage) {
-                            if (p2move.p2movement.hasDrink) {
+                            if (Inventory2.inventory2.HasItem("Drink")) {
                                 // move to next stage:
                                 phoneTask.drinkStage = false;
                                 phoneTask.phoneStage = true;
                                 curInkJSON = inkJSONDrink; // "drink was good. your phone is here"
                                 Debug.Log("ACTIVATE");
+
+                                //destroy drink
+                                Inventory2.inventory2.DestroyItem("Drink");
+
                                 callbackAction = SetActivePhone; //activate phone!
                             }
                             else {

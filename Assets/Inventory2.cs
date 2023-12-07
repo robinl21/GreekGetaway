@@ -27,6 +27,46 @@ public class Inventory2 : MonoBehaviour
         mItems2.Add(null);
     }
 
+    public bool HasItem(string name) {
+        foreach(IInventoryItem item in mItems2) {
+            if (item == null) {
+                continue;
+            }
+            else {
+                if (item.Name == name) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public void DestroyItem(string name) {
+        int counter = 0;
+        foreach(IInventoryItem item in mItems2) {
+            if (item == null) {
+                // do nothing
+            }
+            else {
+                if (item.Name == name) {
+                    //destroy: don't drop
+                    numItems -= 1; // set num of Items
+                    mItems2[counter] = null; //set mItems at this index
+
+                    item.onPickUp(); //sets it to inactive 
+                    // (item now inactive, not in mitems - destroyed)
+
+                    ItemDropped2(this, new IInventoryEventArgs(item, counter)); //remove from HUD at this index
+                    
+                    break; // finish
+
+                }   
+            }
+
+            counter += 1;
+        }
+
+    }
     public void AddItem2(IInventoryItem item){
         if (numItems < SLOTS){
             Debug.Log("Entered AddItem");

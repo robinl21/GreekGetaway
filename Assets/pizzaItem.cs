@@ -2,28 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Phone : MonoBehaviour, IInventoryItem
+public class pizzaItem : MonoBehaviour, IInventoryItem
 {
     public string Name {
-        get{
-            return "Phone";
+        get {
+            return "Pizza";
         }
     }
 
-    // Update is called once per frame
     public Sprite _Image = null;
+
     public Sprite Image {
         get {
-            return _Image; 
+            return _Image;
         }
     }
 
-    public void onPickUp(){
+    public void onPickUp() {
         gameObject.SetActive(false);
     }
 
-
     public void onDrop() {
-        // make active
+        gameObject.SetActive(true);
     }
 }

@@ -56,9 +56,7 @@ public class DialogeTriggerPhone : MonoBehaviour
 
                         DialogueManager.GetInstance().EnterDialogueMode(inkJSON, true, destroyCallback);
 
-                        // get phone: quest done!
-                        p1move.p1movement.hasPhone = true;
-                        PhoneTaskController.phoneTask.allDone = true;
+                        PhoneTaskController.phoneTask.allDone = true; // just sets to complete
 
 
                     }
@@ -69,11 +67,8 @@ public class DialogeTriggerPhone : MonoBehaviour
                         Debug.Log("RUN PLAYER2");
                         DialogueManager.GetInstance().EnterDialogueMode(inkJSON, false, destroyCallback); // player 2
 
-                        
-
-                        // get phone: quest done!
-                        p2move.p2movement.hasPhone = true;
-                        PhoneTaskController.phoneTask.allDone = true;
+                    
+                        PhoneTaskController.phoneTask.allDone = true; // just sets to complete
 
                     }
                 }

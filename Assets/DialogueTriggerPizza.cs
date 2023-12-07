@@ -11,8 +11,14 @@ public class DialogeTriggerPizza : MonoBehaviour
     [SerializeField] private TextAsset inkJSON; 
 
     [Header("Parent Object")]
-    [SerializeField] private GameObject pizza;
+    [SerializeField] private GameObject pizza; // header object
 
+
+    [Header("Parent Object")]
+    [SerializeField] private GameObject bigfatselina; // header object
+
+    private Inventory inventory1;
+    private Inventory2 inventory2;
 
     private List<Collider2D> playersInZone = new List<Collider2D>();
 
@@ -37,9 +43,22 @@ public class DialogeTriggerPizza : MonoBehaviour
         }
     }
 
-    public void DestroyPizza() {
-        pizza.SetActive(false);
+    // after speaking, add header item
+    public void PickUpPizzaP1() {
+        IInventoryItem item = pizza.GetComponent<IInventoryItem>();
+        inventory1 = Inventory.inventory;
+        inventory1.AddItem(item);
     }
+
+    public void PickUpPizzaP2() {
+        Debug.Log(
+            "Entered PickUpPizzaP2"
+        );
+        IInventoryItem item = pizza.GetComponent<IInventoryItem>();
+        inventory2 = Inventory2.inventory2;
+        inventory2.AddItem2(item);
+    }
+
 
     private void Update()
     {   
@@ -49,15 +68,13 @@ public class DialogeTriggerPizza : MonoBehaviour
             visualCue.SetActive(true);
             foreach (var player in playersInZone)
             {   
-                Action destroyCallback = DestroyPizza;
                 if (player.CompareTag("Player1")) {
                     if (InputManager.GetInstance().GetInteractPressed() && !DialogueManager.GetInstance().dialogueIsPlaying1) {
 
 
-                        DialogueManager.GetInstance().EnterDialogueMode(inkJSON, true, destroyCallback);
+                        DialogueManager.GetInstance().EnterDialogueMode(inkJSON, true, PickUpPizzaP1);
 
                         // get pizza
-                        p1move.p1movement.hasPizza = true;
 
 
                     }
@@ -66,11 +83,8 @@ public class DialogeTriggerPizza : MonoBehaviour
                 if (player.CompareTag("Player2")) {
                     if (InputManager1.GetInstance().GetInteractPressed() && !DialogueManager.GetInstance().dialogueIsPlaying2) {
                         Debug.Log("RUN PLAYER2");
-                        DialogueManager.GetInstance().EnterDialogueMode(inkJSON, false, destroyCallback); // player 2
+                        DialogueManager.GetInstance().EnterDialogueMode(inkJSON, false, PickUpPizzaP2); // player 2
 
-                        
-                        // get pizza
-                        p2move.p2movement.hasPizza = true;
 
                     }
                 }

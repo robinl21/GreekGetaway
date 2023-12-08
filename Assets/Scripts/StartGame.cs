@@ -23,5 +23,6 @@ public class StartGame : MonoBehaviour
         SceneManager.LoadScene("Floor2", LoadSceneMode.Additive);
         SceneManager.LoadScene("GetJacketTask", LoadSceneMode.Additive);
         SceneManager.LoadScene("SampleScene", LoadSceneMode.Additive);
+        SceneManager.LoadScene("ExesScene", LoadSceneMode.Additive);
     }
 }

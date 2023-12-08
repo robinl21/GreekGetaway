@@ -24,11 +24,6 @@ public class p2move : MonoBehaviour
 
     // temporary inventory bools
     // #####################
-    public bool hasPizza = false;
-
-    public bool hasPhone = false;
-
-    public bool hasDrink = false;
 
     public bool metJeff = false;
     // ###################
@@ -40,13 +35,13 @@ public class p2move : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log("ISACTIVE");
-        IInventoryItem item = other.GetComponent<IInventoryItem>();
-        if (item != null) {
-            inventory.AddItem2(item);
-        }
-    }
+    // private void OnTriggerEnter2D(Collider2D other) {
+    //     Debug.Log("ISACTIVE");
+    //     IInventoryItem item = other.GetComponent<IInventoryItem>();
+    //     if (item != null) {
+    //         inventory.AddItem2(item);
+    //     }
+    // }
 
     private void OnEnable()
     {
@@ -56,6 +51,8 @@ public class p2move : MonoBehaviour
         input.P2.Movement.canceled += OnMovementCancelled;
 
         input.P2.QuestLog.performed += OnQuestLogPerformed;
+
+        input.P2.DropItem1.performed += OnDropItem1Performed;
     }
 
     private void OnDisable()
@@ -109,5 +106,11 @@ public class p2move : MonoBehaviour
     private void OnQuestLogPerformed(InputAction.CallbackContext value) {
         bool isActive = this.questLog.activeSelf;
         this.questLog.SetActive(!isActive);
+    }
+
+    private void OnDropItem1Performed(InputAction.CallbackContext value) {
+        // modify inventory: call dropItem
+        IInventoryItem toDrop = inventory.mItems2[0];
+        inventory.DropItem2(toDrop, 0); //Inventory mList changed, #items changed, HUD also changed
     }
 }

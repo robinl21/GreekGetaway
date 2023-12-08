@@ -62,6 +62,24 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DropItem1"",
+                    ""type"": ""Button"",
+                    ""id"": ""dce09038-416e-4d63-b132-c023305f3439"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DropItem2"",
+                    ""type"": ""Button"",
+                    ""id"": ""12c48606-138d-491e-817e-9cd0c303f5ea"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -152,6 +170,28 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""QuestLog"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""17b5feec-fee7-4358-8642-2d9c90bb8255"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DropItem1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c5891a3c-02f6-4327-9a3d-781f599c2854"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DropItem2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -190,6 +230,24 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""name"": ""QuestLog"",
                     ""type"": ""Button"",
                     ""id"": ""a795cd5d-7da3-41d8-96b9-3ff90a50091f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DropItem1"",
+                    ""type"": ""Button"",
+                    ""id"": ""b02d4b72-16bc-41fe-bf01-9b389b27f28a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DropItem2"",
+                    ""type"": ""Button"",
+                    ""id"": ""49c02c4f-ed6a-4087-bd1f-bd4e337ac72e"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -284,6 +342,28 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""QuestLog"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d197143f-e1be-44ee-9247-f32e819455d6"",
+                    ""path"": ""<Keyboard>/9"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DropItem1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7bb0b146-de52-4bc0-980a-97bd0d4110a4"",
+                    ""path"": ""<Keyboard>/0"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DropItem2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -296,12 +376,16 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_P1_Interact = m_P1.FindAction("Interact", throwIfNotFound: true);
         m_P1_Submit = m_P1.FindAction("Submit", throwIfNotFound: true);
         m_P1_QuestLog = m_P1.FindAction("QuestLog", throwIfNotFound: true);
+        m_P1_DropItem1 = m_P1.FindAction("DropItem1", throwIfNotFound: true);
+        m_P1_DropItem2 = m_P1.FindAction("DropItem2", throwIfNotFound: true);
         // P2
         m_P2 = asset.FindActionMap("P2", throwIfNotFound: true);
         m_P2_Movement = m_P2.FindAction("Movement", throwIfNotFound: true);
         m_P2_Submit = m_P2.FindAction("Submit", throwIfNotFound: true);
         m_P2_Interact = m_P2.FindAction("Interact", throwIfNotFound: true);
         m_P2_QuestLog = m_P2.FindAction("QuestLog", throwIfNotFound: true);
+        m_P2_DropItem1 = m_P2.FindAction("DropItem1", throwIfNotFound: true);
+        m_P2_DropItem2 = m_P2.FindAction("DropItem2", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -367,6 +451,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_P1_Interact;
     private readonly InputAction m_P1_Submit;
     private readonly InputAction m_P1_QuestLog;
+    private readonly InputAction m_P1_DropItem1;
+    private readonly InputAction m_P1_DropItem2;
     public struct P1Actions
     {
         private @PlayerControls m_Wrapper;
@@ -375,6 +461,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_P1_Interact;
         public InputAction @Submit => m_Wrapper.m_P1_Submit;
         public InputAction @QuestLog => m_Wrapper.m_P1_QuestLog;
+        public InputAction @DropItem1 => m_Wrapper.m_P1_DropItem1;
+        public InputAction @DropItem2 => m_Wrapper.m_P1_DropItem2;
         public InputActionMap Get() { return m_Wrapper.m_P1; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -396,6 +484,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @QuestLog.started += instance.OnQuestLog;
             @QuestLog.performed += instance.OnQuestLog;
             @QuestLog.canceled += instance.OnQuestLog;
+            @DropItem1.started += instance.OnDropItem1;
+            @DropItem1.performed += instance.OnDropItem1;
+            @DropItem1.canceled += instance.OnDropItem1;
+            @DropItem2.started += instance.OnDropItem2;
+            @DropItem2.performed += instance.OnDropItem2;
+            @DropItem2.canceled += instance.OnDropItem2;
         }
 
         private void UnregisterCallbacks(IP1Actions instance)
@@ -412,6 +506,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @QuestLog.started -= instance.OnQuestLog;
             @QuestLog.performed -= instance.OnQuestLog;
             @QuestLog.canceled -= instance.OnQuestLog;
+            @DropItem1.started -= instance.OnDropItem1;
+            @DropItem1.performed -= instance.OnDropItem1;
+            @DropItem1.canceled -= instance.OnDropItem1;
+            @DropItem2.started -= instance.OnDropItem2;
+            @DropItem2.performed -= instance.OnDropItem2;
+            @DropItem2.canceled -= instance.OnDropItem2;
         }
 
         public void RemoveCallbacks(IP1Actions instance)
@@ -437,6 +537,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_P2_Submit;
     private readonly InputAction m_P2_Interact;
     private readonly InputAction m_P2_QuestLog;
+    private readonly InputAction m_P2_DropItem1;
+    private readonly InputAction m_P2_DropItem2;
     public struct P2Actions
     {
         private @PlayerControls m_Wrapper;
@@ -445,6 +547,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Submit => m_Wrapper.m_P2_Submit;
         public InputAction @Interact => m_Wrapper.m_P2_Interact;
         public InputAction @QuestLog => m_Wrapper.m_P2_QuestLog;
+        public InputAction @DropItem1 => m_Wrapper.m_P2_DropItem1;
+        public InputAction @DropItem2 => m_Wrapper.m_P2_DropItem2;
         public InputActionMap Get() { return m_Wrapper.m_P2; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -466,6 +570,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @QuestLog.started += instance.OnQuestLog;
             @QuestLog.performed += instance.OnQuestLog;
             @QuestLog.canceled += instance.OnQuestLog;
+            @DropItem1.started += instance.OnDropItem1;
+            @DropItem1.performed += instance.OnDropItem1;
+            @DropItem1.canceled += instance.OnDropItem1;
+            @DropItem2.started += instance.OnDropItem2;
+            @DropItem2.performed += instance.OnDropItem2;
+            @DropItem2.canceled += instance.OnDropItem2;
         }
 
         private void UnregisterCallbacks(IP2Actions instance)
@@ -482,6 +592,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @QuestLog.started -= instance.OnQuestLog;
             @QuestLog.performed -= instance.OnQuestLog;
             @QuestLog.canceled -= instance.OnQuestLog;
+            @DropItem1.started -= instance.OnDropItem1;
+            @DropItem1.performed -= instance.OnDropItem1;
+            @DropItem1.canceled -= instance.OnDropItem1;
+            @DropItem2.started -= instance.OnDropItem2;
+            @DropItem2.performed -= instance.OnDropItem2;
+            @DropItem2.canceled -= instance.OnDropItem2;
         }
 
         public void RemoveCallbacks(IP2Actions instance)
@@ -505,6 +621,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnSubmit(InputAction.CallbackContext context);
         void OnQuestLog(InputAction.CallbackContext context);
+        void OnDropItem1(InputAction.CallbackContext context);
+        void OnDropItem2(InputAction.CallbackContext context);
     }
     public interface IP2Actions
     {
@@ -512,5 +630,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnSubmit(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnQuestLog(InputAction.CallbackContext context);
+        void OnDropItem1(InputAction.CallbackContext context);
+        void OnDropItem2(InputAction.CallbackContext context);
     }
 }

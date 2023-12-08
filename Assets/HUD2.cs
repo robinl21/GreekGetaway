@@ -10,6 +10,7 @@ public class HUD2 : MonoBehaviour
     void Start()
     {
         Inventory2.ItemAdded2 += InventoryScript_ItemAdded2;
+        Inventory2.ItemDropped2 += InventoryScript_ItemDropped2;
     }
 
     // Update is called once per frame
@@ -29,6 +30,27 @@ public class HUD2 : MonoBehaviour
 
                 break;
             }
+        }
+    }
+
+    private void InventoryScript_ItemDropped2(object sender, IInventoryEventArgs e) {
+        Transform inventoryPanel = transform.Find("Inventory");
+        int counter = 0;
+        Transform slot = null;
+        foreach(Transform slt in inventoryPanel) {
+            if (counter == e.Index) {
+                slot = slt;
+                break;
+            }
+            counter += 1;
+        }
+        Debug.Log("index" + e);
+        Debug.Log("Slot: Drop" + slot.name);
+        Image image = slot.GetChild(0).GetChild(0).GetComponent<Image>();
+        Debug.Log("Image: Drop" + image.name);
+        if (image.enabled) { // if something there, take out
+            image.enabled = false;
+            image.sprite = null;
         }
     }
 }

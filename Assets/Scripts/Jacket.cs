@@ -22,4 +22,8 @@ public class Jacket : MonoBehaviour, IInventoryItem
     public void onPickUp(){
         gameObject.SetActive(false);
     }
+
+    public void onDrop() {
+        gameObject.SetActive(true);
+    }
 }

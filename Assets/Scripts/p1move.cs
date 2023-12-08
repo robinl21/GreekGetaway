@@ -18,12 +18,7 @@ public class p1move : MonoBehaviour
 
     // temporary inventory bools
     // #####################
-    public bool hasPizza = false;
-
     public bool hasPhone = false;
-
-    public bool hasDrink = false;
-
     public bool metJeff = false;
     // ###################
 
@@ -44,14 +39,18 @@ public class p1move : MonoBehaviour
         input.P1.Movement.canceled += OnMovementCancelled;
 
         input.P1.QuestLog.performed += OnQuestLogPerformed;
+
+        input.P1.DropItem1.performed += OnDropItem1Performed;
+
+
     }
-    private void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log("ISACTIVE");
-        IInventoryItem item = other.GetComponent<IInventoryItem>();
-        if (item != null) {
-            inventory.AddItem(item);
-        }
-    }
+    // private void OnTriggerEnter2D(Collider2D other) {
+    //     Debug.Log("ISACTIVE");
+    //     IInventoryItem item = other.GetComponent<IInventoryItem>();
+    //     if (item != null) {
+    //         inventory.AddItem(item);
+    //     }
+    // }
     
 
     private void OnDisable()
@@ -61,6 +60,11 @@ public class p1move : MonoBehaviour
         // p1's inputs are w,a,s,d as set in PlayerControls input map, so when w,a,s,d hit: we trigger these functions!
         input.P1.Movement.performed -= OnMovementPerformed;
         input.P1.Movement.canceled -= OnMovementPerformed;
+
+        input.P1.QuestLog.performed -= OnQuestLogPerformed;
+        input.P1.QuestLog.canceled -= OnQuestLogPerformed;
+
+
     }
 
     
@@ -91,4 +95,9 @@ public class p1move : MonoBehaviour
         this.questLog.SetActive(!isActive);
     }
     
+    private void OnDropItem1Performed(InputAction.CallbackContext value) {
+        // modify inventory: call dropItem
+        IInventoryItem toDrop = inventory.mItems[0];
+        inventory.DropItem(toDrop, 0); //Inventory mList changed, #items changed, HUD also changed
+    }
 }

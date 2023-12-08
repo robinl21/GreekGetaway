@@ -21,4 +21,9 @@ public class Phone : MonoBehaviour, IInventoryItem
     public void onPickUp(){
         gameObject.SetActive(false);
     }
+
+
+    public void onDrop() {
+        // make active
+    }
 }

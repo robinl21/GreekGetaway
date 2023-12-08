@@ -12,6 +12,7 @@ public class DialogeTriggerBartender : MonoBehaviour
 
     private List<Collider2D> playersInZone = new List<Collider2D>();
 
+    public GameObject drinkTemplate;
     private void Awake()
     {
         visualCue.SetActive(false);
@@ -33,6 +34,11 @@ public class DialogeTriggerBartender : MonoBehaviour
         }
     }
 
+    private void CreateDrink() {
+        GameObject drink = (GameObject)Instantiate(drinkTemplate);
+        drink.SetActive(true);
+        
+    }
     private void Update()
     {
         if (playersInZone.Count > 0)
@@ -44,10 +50,10 @@ public class DialogeTriggerBartender : MonoBehaviour
                 if (player.CompareTag("Player1")) {
                     if (InputManager.GetInstance().GetInteractPressed() && !DialogueManager.GetInstance().dialogueIsPlaying1) {
 
-                        DialogueManager.GetInstance().EnterDialogueMode(inkJSON, true);
+                        DialogueManager.GetInstance().EnterDialogueMode(inkJSON, true, CreateDrink);
 
                         // give drink
-                        p1move.p1movement.hasDrink = true;
+                        
 
                     }
                 }
@@ -55,11 +61,9 @@ public class DialogeTriggerBartender : MonoBehaviour
                 if (player.CompareTag("Player2")) {
                     if (InputManager1.GetInstance().GetInteractPressed() && !DialogueManager.GetInstance().dialogueIsPlaying2) {
                         Debug.Log("RUN PLAYER2");
-                        DialogueManager.GetInstance().EnterDialogueMode(inkJSON, false); // player 2
+                        DialogueManager.GetInstance().EnterDialogueMode(inkJSON, false, CreateDrink); // player 2
 
                         
-                        // give drink
-                        p2move.p2movement.hasDrink = true;
                     }
                 }
                 

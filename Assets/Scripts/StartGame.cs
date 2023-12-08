@@ -20,9 +20,13 @@ public class StartGame : MonoBehaviour
     public void loadTheGame ()
     {
         SceneManager.LoadScene("PlayerScene", LoadSceneMode.Single);
+        SceneManager.LoadScene("bathroom", LoadSceneMode.Additive);
+        SceneManager.LoadScene("BrotherFloor2Task", LoadSceneMode.Additive);
+        SceneManager.LoadScene("ExesScene", LoadSceneMode.Additive);
         SceneManager.LoadScene("Floor2", LoadSceneMode.Additive);
         SceneManager.LoadScene("GetJacketTask", LoadSceneMode.Additive);
+        SceneManager.LoadScene("GetPhoneTask", LoadSceneMode.Additive);
         SceneManager.LoadScene("SampleScene", LoadSceneMode.Additive);
-        SceneManager.LoadScene("ExesScene", LoadSceneMode.Additive);
+        
     }
 }

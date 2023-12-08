@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PaperTowelItem : MonoBehaviour, IInventoryItem
+public class NumberItem : MonoBehaviour, IInventoryItem
 {
     public string Name {
         get {
-            return "Pizza";
+            return "Number";
         }
     }
 

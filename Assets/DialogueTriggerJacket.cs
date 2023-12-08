@@ -11,6 +11,8 @@ public class DialogeTriggerJacket : MonoBehaviour
     [Header("Ink JSON Initiate")]
     [SerializeField] private TextAsset inkJSONInitiate; 
 
+    [Header("Ink JSON Jcaket")]
+    [SerializeField] private TextAsset inkJSONGiveJacket; 
     [Header("Ink JSON Finish")]
     [SerializeField] private TextAsset inkJSONFinish; 
 
@@ -23,6 +25,10 @@ public class DialogeTriggerJacket : MonoBehaviour
     public bool numberStage = false; // Sweet. Here's your jacket. 
 
     public bool finishStage = false; // Your jacket was ugly anyways
+
+    public SpriteRenderer jacketManSprite;
+
+    public Sprite newSprite; 
 
     private void Awake()
     {
@@ -51,6 +57,10 @@ public class DialogeTriggerJacket : MonoBehaviour
         }
     }
 
+    private void ReceiveJacket() {
+        JacketTaskController.jacketTask.jacketDone = true;
+        jacketManSprite.sprite = newSprite;
+    }
     private void Update()
     {   
         if (playersInZone.Count > 0)
@@ -76,11 +86,12 @@ public class DialogeTriggerJacket : MonoBehaviour
                             if (Inventory.inventory.HasItem("Number")) {
                                 this.numberStage = false;
                                 this.finishStage = true;
-                                curInkJSON = inkJSONFinish;
+                                curInkJSON = inkJSONGiveJacket;
 
-                                //give jacket back + change sprite
-                                JacketTaskController.jacketTask.jacketDone = true;
+                                // take number
                                 Inventory.inventory.DestroyItem("Number");
+                                // + change sprite + get jacket
+                                callBackAction = ReceiveJacket;
                             }
                             else {
                                 curInkJSON = inkJSONInitiate;
@@ -111,10 +122,10 @@ public class DialogeTriggerJacket : MonoBehaviour
                             if (Inventory2.inventory2.HasItem("Number")) {
                                 this.numberStage = false;
                                 this.finishStage = true;
-                                curInkJSON = inkJSONFinish;
+                                curInkJSON = inkJSONGiveJacket;
                                 //give jacket back
-                                JacketTaskController.jacketTask.jacketDone = true;
                                 Inventory2.inventory2.DestroyItem("Number");
+                                callBackAction = ReceiveJacket;
                             }
                             else {
                                 curInkJSON = inkJSONInitiate;

@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class DialogeTriggerJacket : MonoBehaviour
 {
     [Header("Visual Cue")]
     [SerializeField] private GameObject visualCue;
 
-    [Header("Ink JSON Active")]
-    [SerializeField] private TextAsset inkJSONActive; 
+    [Header("Ink JSON Initiate")]
+    [SerializeField] private TextAsset inkJSONInitiate; 
 
     [Header("Ink JSON Finish")]
     [SerializeField] private TextAsset inkJSONFinish; 
@@ -17,9 +18,21 @@ public class DialogeTriggerJacket : MonoBehaviour
 
     private List<Collider2D> playersInZone = new List<Collider2D>();
 
+    public bool initialStage = true; // I'll give you jacket back if you give me her number
+
+    public bool numberStage = false; // Sweet. Here's your jacket. 
+
+    public bool finishStage = false; // Your jacket was ugly anyways
+
     private void Awake()
     {
         visualCue.SetActive(false);
+    }
+
+    public void Start() {
+        this.initialStage = true;
+        this.numberStage = false;
+        this.finishStage = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -39,40 +52,80 @@ public class DialogeTriggerJacket : MonoBehaviour
     }
 
     private void Update()
-    {
+    {   
         if (playersInZone.Count > 0)
-        {
+        {   
             visualCue.SetActive(true);
             foreach (var player in playersInZone)
             {   
-                //finished jacket task
-                if (JacketTaskController.jacketTask.jacketDone) {
-                    curInkJSON = inkJSONFinish;
-                    //
-                }
-                else {
-                    curInkJSON = inkJSONActive;
-                }
+
 
                 if (player.CompareTag("Player1")) {
                     if (InputManager.GetInstance().GetInteractPressed() && !DialogueManager.GetInstance().dialogueIsPlaying1) {
-                        Debug.Log("RUN PLAYER1");
-                        DialogueManager.GetInstance().EnterDialogueMode(curInkJSON, true);
+                        
+                        Action callBackAction = null;
 
-                        // jacketDone true: dialogues now "finished" dialogues
-                        JacketTaskController.jacketTask.jacketDone = true;
-                        // TODO: JACKET DISAPPEAR
+                        if (this.initialStage) {
+                            Debug.Log("HERE");
+                            this.initialStage = false;
+                            this.numberStage = true;
+                            curInkJSON = inkJSONInitiate;
+                        }
+
+                        else if (this.numberStage) {
+                            if (Inventory.inventory.HasItem("Number")) {
+                                this.numberStage = false;
+                                this.finishStage = true;
+                                curInkJSON = inkJSONFinish;
+
+                                //give jacket back + change sprite
+                                JacketTaskController.jacketTask.jacketDone = true;
+                                Inventory.inventory.DestroyItem("Number");
+                            }
+                            else {
+                                curInkJSON = inkJSONInitiate;
+                            }
+                        }
+
+                        else if (this.finishStage) {
+                            curInkJSON = inkJSONFinish;
+                        }
+
+                        DialogueManager.GetInstance().EnterDialogueMode(curInkJSON, true, callBackAction);
+
                     }
                 }
 
                 if (player.CompareTag("Player2")) {
                     if (InputManager1.GetInstance().GetInteractPressed() && !DialogueManager.GetInstance().dialogueIsPlaying2) {
-                        Debug.Log("RUN PLAYER2");
-                        DialogueManager.GetInstance().EnterDialogueMode(curInkJSON, false); // player 2
+                        
+                        Action callBackAction = null;
 
-                        // jacketDone true: dialogues now "finished" dialogues
-                        JacketTaskController.jacketTask.jacketDone = true;
-                        // TODO: JACKET DISAPPEAR
+                        if (this.initialStage) {
+                            this.initialStage = false;
+                            this.numberStage = true;
+                            curInkJSON = inkJSONInitiate;
+                        }
+
+                        else if (this.numberStage) {
+                            if (Inventory2.inventory2.HasItem("Number")) {
+                                this.numberStage = false;
+                                this.finishStage = true;
+                                curInkJSON = inkJSONFinish;
+                                //give jacket back
+                                JacketTaskController.jacketTask.jacketDone = true;
+                                Inventory2.inventory2.DestroyItem("Number");
+                            }
+                            else {
+                                curInkJSON = inkJSONInitiate;
+                            }
+                        }
+
+                        else if (this.finishStage) {
+                            curInkJSON = inkJSONFinish;
+                        }
+                        
+                        DialogueManager.GetInstance().EnterDialogueMode(curInkJSON, false, callBackAction);
                     }
                 }
                 

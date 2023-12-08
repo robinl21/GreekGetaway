@@ -56,10 +56,6 @@ public class DialogeTriggerDude : MonoBehaviour
                         Debug.Log("RUN PLAYER1");
                         DialogueManager.GetInstance().EnterDialogueMode(curInkJSON, true);
 
-                        // jacket quest activated if not done
-                        if (!JacketTaskController.jacketTask.jacketDone) {
-                            JacketTaskController.jacketTask.activateJacket = true;
-                        }
 
 
                     }
@@ -70,10 +66,6 @@ public class DialogeTriggerDude : MonoBehaviour
                         Debug.Log("RUN PLAYER2");
                         DialogueManager.GetInstance().EnterDialogueMode(curInkJSON, false); // player 2
                         
-                        // jacket quest activated if not done
-                        if (!JacketTaskController.jacketTask.jacketDone) {
-                            JacketTaskController.jacketTask.activateJacket = true;
-                        }
                     }
                 }
                 

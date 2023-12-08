@@ -20,7 +20,12 @@ public class p2move : MonoBehaviour
     public Inventory2 inventory; 
 
     public GameObject questLog;
-    
+
+    public Sprite rightSprite;
+    public Sprite leftSprite;
+    public Sprite upSprite;
+    public Sprite downSprite;
+
 
     // temporary inventory bools
     // #####################
@@ -90,6 +95,24 @@ public class p2move : MonoBehaviour
             {
                 x = x * -1;
                 y = y * -1;
+            }
+
+            //Alter sprite
+            if (y == -1)
+            {
+                this.gameObject.GetComponent<SpriteRenderer>().sprite = downSprite;
+            }
+            else if (y == 1)
+            {
+                this.gameObject.GetComponent<SpriteRenderer>().sprite = upSprite;
+            }
+            else if (x == -1)
+            {
+                this.gameObject.GetComponent<SpriteRenderer>().sprite = leftSprite;
+            }
+            else if (x == 1)
+            {
+                this.gameObject.GetComponent<SpriteRenderer>().sprite = rightSprite;
             }
 
             moveVector = new Vector2(x, y);

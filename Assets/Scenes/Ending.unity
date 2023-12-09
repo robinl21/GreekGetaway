@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 513699922}
   - component: {fileID: 513699921}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: EndTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visualCue: {fileID: 1900571746}
-  inkJSON: {fileID: 0}
+  inkJSON: {fileID: 4900000, guid: cc1852af3a481454d9ca0133cd257a36, type: 3}
 --- !u!61 &513699922
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -231,7 +231,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.023681074, y: 0.32301855}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -242,7 +242,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.26523, y: 1.6460371}
   m_EdgeRadius: 0
 --- !u!4 &513699923
 Transform:
@@ -253,8 +253,8 @@ Transform:
   m_GameObject: {fileID: 513699920}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.9323335, y: -9.478035, z: -0.004187686}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 4.033, y: -9.489, z: -0.004187686}
+  m_LocalScale: {x: 2.1418748, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1900571748}
@@ -338,8 +338,8 @@ Transform:
   m_GameObject: {fileID: 1900571746}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.9323335, y: 9.478035, z: 0.004187686}
-  m_LocalScale: {x: 0.099999994, y: 0.099999994, z: 1}
+  m_LocalPosition: {x: 0, y: 0.92, z: 0}
+  m_LocalScale: {x: 0.099999994, y: 0.16375, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 513699923}

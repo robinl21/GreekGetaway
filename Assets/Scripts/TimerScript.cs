@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class TimerScript : MonoBehaviour
 {
 
-    public float totalTime = 240.0f;
+    public float totalTime = 120.0f;
     private float originalTime;
     public TextMeshProUGUI timerVisual;
 

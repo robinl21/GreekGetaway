@@ -18,7 +18,6 @@ public class p1move : MonoBehaviour
 
     // temporary inventory bools
     // #####################
-    public bool hasPhone = false;
     public bool metJeff = false;
     // ###################
 
@@ -43,6 +42,7 @@ public class p1move : MonoBehaviour
         input.P1.DropItem1.performed += OnDropItem1Performed;
 
 
+        input.P1.DropItem2.performed += OnDropItem2Performed;
     }
     // private void OnTriggerEnter2D(Collider2D other) {
     //     Debug.Log("ISACTIVE");
@@ -99,5 +99,10 @@ public class p1move : MonoBehaviour
         // modify inventory: call dropItem
         IInventoryItem toDrop = inventory.mItems[0];
         inventory.DropItem(toDrop, 0); //Inventory mList changed, #items changed, HUD also changed
+    }
+
+    private void OnDropItem2Performed(InputAction.CallbackContext value) {
+        IInventoryItem toDrop = inventory.mItems[1];
+        inventory.DropItem(toDrop, 1); // dropItem checks whether actually is an item
     }
 }

@@ -85,7 +85,9 @@ public class DialogeTriggerPinkGirl : MonoBehaviour
                         }
 
                         else if (this.paperTowelStage) {
+                            Debug.Log("HAS PAPER TOWEL?");
                             if (Inventory.inventory.HasItem("PaperTowel")) {
+                                
                                 this.paperTowelStage = false;
                                 this.drinkStage = true;
                                 curInkJSON = inkJSONPaper; // can you get me a drink?
@@ -96,6 +98,7 @@ public class DialogeTriggerPinkGirl : MonoBehaviour
                                 Inventory.inventory.DestroyItem("PaperTowel");
                             }
                             else {
+                                Debug.Log("NO TOWEL");
                                 curInkJSON = inkJSONInitiate; // get me a paper towel
                             }
                         }

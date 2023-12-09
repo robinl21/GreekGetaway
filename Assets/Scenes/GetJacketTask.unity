@@ -563,7 +563,7 @@ MonoBehaviour:
   inkJSONFinishDrink: {fileID: 4900000, guid: fb125639232d75b458379b52bad490eb, type: 3}
   inkJSONFinish: {fileID: 4900000, guid: cb09a0376f28bed41af52e7515cc23fc, type: 3}
   vomit: {fileID: 1405475927}
-  number: {fileID: 0}
+  number: {fileID: 648040016}
   initialStage: 1
   paperTowelStage: 0
   drinkStage: 0
@@ -714,7 +714,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &648040017
 MonoBehaviour:
   m_ObjectHideFlags: 0

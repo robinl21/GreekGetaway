@@ -6,7 +6,7 @@ public class PaperTowelItem : MonoBehaviour, IInventoryItem
 {
     public string Name {
         get {
-            return "Pizza";
+            return "PaperTowel";
         }
     }
 

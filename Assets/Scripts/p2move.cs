@@ -53,6 +53,8 @@ public class p2move : MonoBehaviour
         input.P2.QuestLog.performed += OnQuestLogPerformed;
 
         input.P2.DropItem1.performed += OnDropItem1Performed;
+
+        input.P2.DropItem2.performed += OnDropItem2Performed;
     }
 
     private void OnDisable()
@@ -112,5 +114,10 @@ public class p2move : MonoBehaviour
         // modify inventory: call dropItem
         IInventoryItem toDrop = inventory.mItems2[0];
         inventory.DropItem2(toDrop, 0); //Inventory mList changed, #items changed, HUD also changed
+    }
+
+    private void OnDropItem2Performed(InputAction.CallbackContext value) {
+        IInventoryItem toDrop = inventory.mItems2[1];
+        inventory.DropItem2(toDrop, 1); // dropItem checks whether actually is an item
     }
 }

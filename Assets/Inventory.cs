@@ -33,9 +33,10 @@ public class Inventory : MonoBehaviour
     public bool HasItem(string name) {
         foreach(IInventoryItem item in mItems) {
             if (item == null) {
-                continue;
             }
             else {
+                Debug.Log("name" + item.Name);
+                
                 if (item.Name == name) {
                     return true;
                 }
@@ -70,7 +71,7 @@ public class Inventory : MonoBehaviour
         }
 
     }
-    public void DropItem(IInventoryItem item, int index) { //drops by index
+    public void DropItem(IInventoryItem item, int index) { //drops by index, checks for null
         if (numItems > 0 && mItems[index] != null) { // item here to remove
             numItems -= 1; // set numItems
             Debug.Log(numItems);
@@ -87,6 +88,7 @@ public class Inventory : MonoBehaviour
     }
     public void AddItem(IInventoryItem item){ //first available slot
         if (numItems < SLOTS){ //ADD!
+            Debug.Log("ITEM NAME" + item.Name);
             Debug.Log("Entered AddItem");
             //Collider2D collider = (item as MonoBehaviour)?.GetComponent<Collider2D>();
             numItems += 1;

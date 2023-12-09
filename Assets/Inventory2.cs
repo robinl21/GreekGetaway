@@ -30,7 +30,6 @@ public class Inventory2 : MonoBehaviour
     public bool HasItem(string name) {
         foreach(IInventoryItem item in mItems2) {
             if (item == null) {
-                continue;
             }
             else {
                 if (item.Name == name) {

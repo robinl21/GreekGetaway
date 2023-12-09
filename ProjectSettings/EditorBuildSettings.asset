@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/GameStart.unity
+    guid: 1bb50fbe4af8444e085918b3fa84bb73
+  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
@@ -15,9 +18,27 @@ EditorBuildSettings:
     path: Assets/Scenes/Floor2.unity
     guid: 5d9d5835271098b429222256000aec0d
   - enabled: 1
+    path: Assets/Scenes/ExesScene.unity
+    guid: edd25a3ccdbd042e0b29161402d0b06b
+  - enabled: 1
     path: Assets/Scenes/PlayerScene.unity
     guid: 2689a8207da37c247b00556e2aa531fc
   - enabled: 1
+    path: Assets/Scenes/ExesGameOver.unity
+    guid: 993b4234e8ef343829dae60479a15677
+  - enabled: 1
+    path: Assets/Scenes/bathroom.unity
+    guid: e7ba49c06569ab64c9a9266df3f61e33
+  - enabled: 1
+    path: Assets/Scenes/BrotherFloor2Task.unity
+    guid: 00207cbfa125d2b45857287a3456699d
+  - enabled: 1
+    path: Assets/Scenes/GetPhoneTask.unity
+    guid: 32d80a1f1cc01cf4fb2953167dbb3ea3
+  - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: f01f3a445fac7c94c85f5b414efb0ebc
+  - enabled: 1
+    path: Assets/Scenes/GameWin.unity
+    guid: e955426d84a568b46b84c7c8e1303923
   m_configObjects: {}

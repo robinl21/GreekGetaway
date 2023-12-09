@@ -14,7 +14,12 @@ public class p1move : MonoBehaviour
 
     public bool canMove = true; 
 
-    public Inventory inventory; 
+    public Inventory inventory;
+
+    public Sprite rightSprite;
+    public Sprite leftSprite;
+    public Sprite upSprite;
+    public Sprite downSprite;
 
     // temporary inventory bools
     // #####################
@@ -78,10 +83,34 @@ public class p1move : MonoBehaviour
     {
         // InputAction.CallbackContext value gives Vector2 based on direction, set by PlayerControls InputMap
         // left is [-1, 0] for ex
-        if (canMove){
-            moveVector = value.ReadValue<Vector2>();
+
+        if (canMove)
+        {
+            Vector2 inputVector = value.ReadValue<Vector2>();
+            float x = inputVector.x;
+            float y = inputVector.y;
+            
+            //Alter sprite
+            if (y == -1)
+            {
+                this.gameObject.GetComponent<SpriteRenderer>().sprite = downSprite;
+            }
+            else if (y == 1)
+            {
+                this.gameObject.GetComponent<SpriteRenderer>().sprite = upSprite;
+            }
+            else if (x == -1)
+            {
+                this.gameObject.GetComponent<SpriteRenderer>().sprite = leftSprite;
+            }
+            else if (x == 1)
+            {
+                this.gameObject.GetComponent<SpriteRenderer>().sprite = rightSprite;
+            }
+
+            moveVector = new Vector2(x, y);
         }
-        
+
 
     }
 

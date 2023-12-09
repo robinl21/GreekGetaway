@@ -30,8 +30,11 @@ public class DialogeTriggerJacket : MonoBehaviour
 
     public Sprite newSprite; 
 
+    private string questName;
+
     private void Awake()
     {
+        this.questName = "Find Your Jacket!";
         visualCue.SetActive(false);
     }
 
@@ -58,7 +61,7 @@ public class DialogeTriggerJacket : MonoBehaviour
     }
 
     private void ReceiveJacket() {
-        JacketTaskController.jacketTask.jacketDone = true;
+        JacketTaskController.jacketTask.allDone = true; // done!
         jacketManSprite.sprite = newSprite;
     }
     private void Update()
@@ -76,7 +79,10 @@ public class DialogeTriggerJacket : MonoBehaviour
                         Action callBackAction = null;
 
                         if (this.initialStage) {
-                            Debug.Log("HERE");
+
+                            // JACKET: already initialized
+                            // update status
+                            QuestScript.questScript.UpdateStatus(questName, "Get her number!");
                             this.initialStage = false;
                             this.numberStage = true;
                             curInkJSON = inkJSONInitiate;
@@ -92,6 +98,7 @@ public class DialogeTriggerJacket : MonoBehaviour
                                 Inventory.inventory.DestroyItem("Number");
                                 // + change sprite + get jacket
                                 callBackAction = ReceiveJacket;
+                                QuestScript.questScript.UpdateStatus(questName, "Finished!");
                             }
                             else {
                                 curInkJSON = inkJSONInitiate;
@@ -116,6 +123,8 @@ public class DialogeTriggerJacket : MonoBehaviour
                             this.initialStage = false;
                             this.numberStage = true;
                             curInkJSON = inkJSONInitiate;
+                            // jacket already initialized: just update status
+                            QuestScript.questScript.UpdateStatus(questName, "Get her number!");
                         }
 
                         else if (this.numberStage) {
@@ -126,6 +135,7 @@ public class DialogeTriggerJacket : MonoBehaviour
                                 //give jacket back
                                 Inventory2.inventory2.DestroyItem("Number");
                                 callBackAction = ReceiveJacket;
+                                QuestScript.questScript.UpdateStatus(questName, "Finished!");
                             }
                             else {
                                 curInkJSON = inkJSONInitiate;

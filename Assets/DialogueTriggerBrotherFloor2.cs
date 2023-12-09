@@ -23,8 +23,11 @@ public class DialogueTriggerBrotherFloor2 : MonoBehaviour
     private TextAsset curInkJSON;
     private List<Collider2D> playersInZone = new List<Collider2D>();
 
+    private string questName;
+
     private void Awake()
     {
+        questName = "Get to the second floor";
         visualCue.SetActive(false);
     }
 
@@ -63,21 +66,18 @@ public class DialogueTriggerBrotherFloor2 : MonoBehaviour
                         
                         Action callBackAction = null;
                         if (BF2Task.initialStage) {
-                            if (p1move.p1movement.metJeff) {
-                                // met a brother:
-                                BF2Task.initialStage = false;
-                                BF2Task.finishStage = true;
-                                curInkJSON = inkJSONFinish; // "Hey, I saw you talking to Jeff! Come up!"
-                                callBackAction = DeactivateGuardian;
+
+                            // create button/quest if not already made: add to all 3!
+                            if (!QuestScript.questScript.QuestSet.Contains(questName)) {
+                                QuestScript.questScript.allQuests.Add(questName);
+                                QuestScript.questScript.allStatus.Add("There's a brother stopping you! Find... Jeff?");
+                                QuestScript.questScript.QuestSet.Add(questName);
                             }
 
-                            else {
-                                // move to find a brother stage:
-                                BF2Task.initialStage = false;
-                                BF2Task.brotherStage = true;
-                                curInkJSON = inkJSONInitiate; // "Sorry, do you know a brother?"
-                            }
-
+                            // move to find a brother stage:
+                            BF2Task.initialStage = false;
+                            BF2Task.brotherStage = true;
+                            curInkJSON = inkJSONInitiate; // "Sorry, do you know a brother?"
                         }
 
                         else if (BF2Task.brotherStage) {
@@ -87,6 +87,10 @@ public class DialogueTriggerBrotherFloor2 : MonoBehaviour
                                 BF2Task.finishStage = true;
                                 curInkJSON = inkJSONFinish; // "Hey, I saw you talking to Jeff! Come up!"
                                 callBackAction = DeactivateGuardian;
+
+                                // finished! update status
+
+                                QuestScript.questScript.UpdateStatus(questName, "Finished!");
                             }
                             else {
                                 // stay in current stage:
@@ -110,20 +114,19 @@ public class DialogueTriggerBrotherFloor2 : MonoBehaviour
                         
                         Action callBackAction = null;
                         if (BF2Task.initialStage) {
-                            if (p2move.p2movement.metJeff) {
-                                // met a brother:
-                                BF2Task.initialStage = false;
-                                BF2Task.finishStage = true;
-                                curInkJSON = inkJSONFinish; // "Hey, I saw you talking to Jeff! Come up!"
-                                callBackAction = DeactivateGuardian;
+
+                            // create button/quest if not already made: add to all 3
+                            if (!QuestScript.questScript.QuestSet.Contains(questName)) {
+                                QuestScript.questScript.allQuests.Add(questName);
+                                QuestScript.questScript.allStatus.Add("There's a brother stopping you! Find... Jeff?"); 
+                                QuestScript.questScript.QuestSet.Add(questName); 
                             }
 
-                            else {
-                                // move to find a brother stage:
-                                BF2Task.initialStage = false;
-                                BF2Task.brotherStage = true;
-                                curInkJSON = inkJSONBrother; // "Sorry, do you know a brother?"
-                            }
+                            // move to find a brother stage:
+                            BF2Task.initialStage = false;
+                            BF2Task.brotherStage = true;
+                            curInkJSON = inkJSONBrother; // "Sorry, do you know a brother?"
+
 
                         }
 
@@ -134,6 +137,8 @@ public class DialogueTriggerBrotherFloor2 : MonoBehaviour
                                 BF2Task.finishStage = true;
                                 curInkJSON = inkJSONFinish; // "Hey, I saw you talking to Jeff! Come up!"
                                 callBackAction = DeactivateGuardian;
+
+                                QuestScript.questScript.UpdateStatus(questName, "Finished!");
                             }
                             else {
                                 // stay in current stage:

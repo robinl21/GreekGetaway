@@ -1,28 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class DialogeTriggerDude : MonoBehaviour
+public class ExitTrigger : MonoBehaviour
 {
+
+
+
+    // Update is called once per frame
     [Header("Visual Cue")]
     [SerializeField] private GameObject visualCue;
 
     [Header("Ink JSON Active")]
-    [SerializeField] private TextAsset inkJSONActive; 
+    [SerializeField] private TextAsset inkJSON; 
 
-    [Header("Ink JSON Finish")]
-    [SerializeField] private TextAsset inkJSONFinish; 
 
-    private TextAsset curInkJSON;
     private List<Collider2D> playersInZone = new List<Collider2D>();
 
     private void Awake()
-    {
+    {   
         visualCue.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("ENDING IN");
         if (other.CompareTag("Player1") || other.CompareTag("Player2"))
         {
             playersInZone.Add(other);
@@ -37,25 +40,28 @@ public class DialogeTriggerDude : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (JacketTaskController.jacketTask.allDone) { //if done, changes dialogue
-            curInkJSON = inkJSONFinish;
-        }
-        else {
-            curInkJSON = inkJSONActive;
-        }
 
+    private void Update()
+    {   
+        
         if (playersInZone.Count > 0)
         {
+            Debug.Log("ENDING DETECTED");
             visualCue.SetActive(true);
+
+            if (playersInZone.Count == 2 && PhoneTaskController.phoneTask.allDone && JacketTaskController.jacketTask.allDone) {
+                SceneManager.LoadScene("GameWin", LoadSceneMode.Single); // win!
+            }
+
             foreach (var player in playersInZone)
-            {
+            {   
                 if (player.CompareTag("Player1")) {
                     if (InputManager.GetInstance().GetInteractPressed() && !DialogueManager.GetInstance().dialogueIsPlaying1) {
-                        Debug.Log("RUN PLAYER1");
-                        DialogueManager.GetInstance().EnterDialogueMode(curInkJSON, true);
 
+
+                        DialogueManager.GetInstance().EnterDialogueMode(inkJSON, true, null);
+
+                        // get pizza
 
 
                     }
@@ -64,20 +70,13 @@ public class DialogeTriggerDude : MonoBehaviour
                 if (player.CompareTag("Player2")) {
                     if (InputManager1.GetInstance().GetInteractPressed() && !DialogueManager.GetInstance().dialogueIsPlaying2) {
                         Debug.Log("RUN PLAYER2");
-                        DialogueManager.GetInstance().EnterDialogueMode(curInkJSON, false); // player 2
-                        
+                        DialogueManager.GetInstance().EnterDialogueMode(inkJSON, false, null); // player 2
+
+
                     }
                 }
                 
-                // if (InputManager.GetInstance().GetInteractPressed() && player.CompareTag("Player1"))
-                // {
-                //     Debug.Log("Player 1 triggered");
-                // }
 
-                // if (InputManager1.GetInstance().GetInteractPressed() && player.CompareTag("Player2"))
-                // {
-                //     Debug.Log("Player 2 triggered");
-                // }
             }
         }
         else

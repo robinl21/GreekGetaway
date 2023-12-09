@@ -58,6 +58,8 @@ public class DialogeTriggerPhone : MonoBehaviour
 
                         PhoneTaskController.phoneTask.allDone = true; // just sets to complete
 
+                        QuestScript.questScript.UpdateStatus("Find Your Phone!", "Finished!"); // update quest
+
 
                     }
                 }
@@ -69,6 +71,7 @@ public class DialogeTriggerPhone : MonoBehaviour
 
                     
                         PhoneTaskController.phoneTask.allDone = true; // just sets to complete
+                        QuestScript.questScript.UpdateStatus("Find Your Phone!", "Finished!"); //update quest
 
                     }
                 }

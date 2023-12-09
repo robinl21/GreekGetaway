@@ -23,11 +23,14 @@ public class DialogueTriggerPhoneGiver : MonoBehaviour
     [Header("Phone Object")]
     [SerializeField] private GameObject phone;
 
+    private string questName;
+
     private TextAsset curInkJSON;
     private List<Collider2D> playersInZone = new List<Collider2D>();
 
     private void Awake()
     {
+        this.questName = "Find Your Phone!";
         visualCue.SetActive(false);
     }
 
@@ -71,6 +74,10 @@ public class DialogueTriggerPhoneGiver : MonoBehaviour
                             phoneTask.initialStage = false;
                             phoneTask.pizzaStage = true;
                             curInkJSON = inkJSONInitiate; // "get me a pizza"
+
+                            //PHONE already initiated
+                            QuestScript.questScript.UpdateStatus(questName, "Get him a pizza!");
+
                         }
 
                         else if (phoneTask.pizzaStage) {
@@ -82,6 +89,8 @@ public class DialogueTriggerPhoneGiver : MonoBehaviour
 
                                 // need to destroy item
                                 Inventory.inventory.DestroyItem("Pizza");
+
+                                QuestScript.questScript.UpdateStatus(questName, "Get him a drink!");
                             }
                             else {
                                 // stay in current stage:
@@ -101,6 +110,7 @@ public class DialogueTriggerPhoneGiver : MonoBehaviour
                                 //destroy drink item
                                 Inventory.inventory.DestroyItem("Drink");
                                 callBackAction = SetActivePhone;
+                                QuestScript.questScript.UpdateStatus(questName, "Phone is on the second floor");
                             }
                             else {
                                 // stay in current stage:
@@ -142,6 +152,8 @@ public class DialogueTriggerPhoneGiver : MonoBehaviour
                             phoneTask.initialStage = false;
                             phoneTask.pizzaStage = true;
                             curInkJSON = inkJSONInitiate; // "get me a pizza"
+
+                            QuestScript.questScript.UpdateStatus(questName, "Get him a pizza!");
                         }
 
                         else if (phoneTask.pizzaStage) {
@@ -153,6 +165,7 @@ public class DialogueTriggerPhoneGiver : MonoBehaviour
 
                                 // need to destroy item pizza
                                 Inventory2.inventory2.DestroyItem("Pizza");
+                                QuestScript.questScript.UpdateStatus(questName, "Get him a drink!");
                             }
                             else {
                                 // stay in current stage:
@@ -173,6 +186,7 @@ public class DialogueTriggerPhoneGiver : MonoBehaviour
                                 Inventory2.inventory2.DestroyItem("Drink");
 
                                 callbackAction = SetActivePhone; //activate phone!
+                                QuestScript.questScript.UpdateStatus(questName, "Phone is on the second floor");
                             }
                             else {
                                 // stay in current stage:

@@ -36,8 +36,11 @@ public class DialogeTriggerPinkGirl : MonoBehaviour
 
     public bool finishStage = false;
 
+    private string questName;
+
     private void Awake()
     {
+        questName = "Take Care of the Vomiting Girl";
         visualCue.SetActive(false);
     }
 
@@ -82,6 +85,14 @@ public class DialogeTriggerPinkGirl : MonoBehaviour
                             this.initialStage = false;
                             this.paperTowelStage = true;
                             curInkJSON = inkJSONInitiate; // get me a paper towel?
+
+                            // create button/quest if not already made: add to all 3
+                            if (!QuestScript.questScript.QuestSet.Contains(questName)) {
+                                QuestScript.questScript.allQuests.Add(questName);
+                                QuestScript.questScript.allStatus.Add("Clean up the vomit with paper towels"); 
+                                QuestScript.questScript.QuestSet.Add(questName); 
+                            }
+
                         }
 
                         else if (this.paperTowelStage) {
@@ -96,6 +107,7 @@ public class DialogeTriggerPinkGirl : MonoBehaviour
                                 // inactivate vomit
                                 vomit.SetActive(false);
                                 Inventory.inventory.DestroyItem("PaperTowel");
+                                QuestScript.questScript.UpdateStatus(questName, "She wants a drink?");
                             }
                             else {
                                 Debug.Log("NO TOWEL");
@@ -114,6 +126,8 @@ public class DialogeTriggerPinkGirl : MonoBehaviour
                                 // use up drink
                                 number.SetActive(true);
                                 Inventory.inventory.DestroyItem("Drink");
+
+                                QuestScript.questScript.UpdateStatus(questName, "Finished!");
                             }
                             else {
                                 curInkJSON = inkJSONPaper; // get me a paper towel
@@ -137,6 +151,14 @@ public class DialogeTriggerPinkGirl : MonoBehaviour
                             this.initialStage = false;
                             this.paperTowelStage = true;
                             curInkJSON = inkJSONInitiate; // get me a paper towel?
+
+                            // create button/quest if not already made: add to all 3
+                            if (!QuestScript.questScript.QuestSet.Contains(questName)) {
+                                QuestScript.questScript.allQuests.Add(questName);
+                                QuestScript.questScript.allStatus.Add("Clean up her vomit with paper towels"); 
+                                QuestScript.questScript.QuestSet.Add(questName); 
+                            }
+
                         }
 
                         else if (this.paperTowelStage) {
@@ -149,6 +171,7 @@ public class DialogeTriggerPinkGirl : MonoBehaviour
                                 // inactivate vomit
                                 vomit.SetActive(false);
                                 Inventory2.inventory2.DestroyItem("PaperTowel");
+                                QuestScript.questScript.UpdateStatus(questName, "She wants a drink?");
                             }
                             else {
                                 curInkJSON = inkJSONInitiate; // get me a paper towel
@@ -166,6 +189,9 @@ public class DialogeTriggerPinkGirl : MonoBehaviour
                                 // use up drink
                                 number.SetActive(true);
                                 Inventory2.inventory2.DestroyItem("Drink");
+
+
+                                QuestScript.questScript.UpdateStatus(questName, "Finished!");
                             }
                             else {
                                 curInkJSON = inkJSONPaper; // get me a paper towel

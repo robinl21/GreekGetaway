@@ -31,11 +31,8 @@ public class TimerScript : MonoBehaviour
         }
         float minutes = Mathf.FloorToInt(totalTime / 60);  
         float seconds = Mathf.FloorToInt(totalTime % 60);
-        timerVisual.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-        
-        if (totalTime <= originalTime / 2)
-        {
-            timerVisual.color = Color.red;
-        }
+        if (totalTime <= originalTime - 45) timerVisual.text = string.Format("DRUNK\n{0:00}:{1:00}", minutes, seconds);
+        else timerVisual.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        if (totalTime <= originalTime / 2) timerVisual.color = Color.red;
     }
 }

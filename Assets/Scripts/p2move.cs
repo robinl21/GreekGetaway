@@ -11,7 +11,7 @@ public class p2move : MonoBehaviour
     private Vector2 moveVector = Vector2.zero;
     private Rigidbody2D rb = null; // attach velocity to move
 
-    private float drunkCountdownTimer = 30.0f;
+    private float drunkCountdownTimer = 45.0f;
     public float moveSpeed;
     public bool canMove = true; 
 

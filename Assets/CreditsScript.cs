@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class RestartGame : MonoBehaviour
+public class CreditsScript : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -17,13 +17,8 @@ public class RestartGame : MonoBehaviour
         
     }
 
-    public void restartTheGame ()
+    public void openCredits ()
     {
-        SceneManager.LoadScene("GameIntroduction", LoadSceneMode.Single);
-    }
-
-    public void gameControls ()
-    {
-        SceneManager.LoadScene("GameStart", LoadSceneMode.Single);
+        SceneManager.LoadScene("CreditsScene", LoadSceneMode.Single);
     }
 }

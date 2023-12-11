@@ -1,2 +1,2 @@
-555-555-5555
+555-555-5555 [Press SPACE or K to CONTINUE]
     -> END

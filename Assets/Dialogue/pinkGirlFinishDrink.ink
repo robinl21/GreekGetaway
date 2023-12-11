@@ -1,2 +1,2 @@
-You're the best. Hey, here's my number ;)
+You're the best! Here's my number ;) [Press SPACE or K to CONTINUE]
     -> END

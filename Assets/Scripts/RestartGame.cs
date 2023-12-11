@@ -19,11 +19,13 @@ public class RestartGame : MonoBehaviour
 
     public void restartTheGame ()
     {
+        // introduction scene
         SceneManager.LoadScene("GameIntroduction", LoadSceneMode.Single);
     }
 
     public void gameControls ()
     {
+        // controls scene
         SceneManager.LoadScene("GameStart", LoadSceneMode.Single);
     }
 }

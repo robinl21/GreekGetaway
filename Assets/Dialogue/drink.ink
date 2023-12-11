@@ -1,2 +1,2 @@
-A CUP OF FUN JUICE!
+A CUP OF FUN JUICE! [Press SPACE or K to CONTINUE]
     -> END

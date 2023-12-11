@@ -1,6 +1,5 @@
-That'll do the trick. All clean! 
-
--> slide2 
+All that throwing up made me thirsty... [Press SPACE or K to CONTINUE]
+-> slide2
 === slide2 ===
-All that throwing up made me thirsty. Can you get me a cup of ... anything ... from the bar?
-    -> END
+Can you get me a CUP of ... ANYTHING from the bar? [Press SPACE or K to CONTINUE]
+-> END

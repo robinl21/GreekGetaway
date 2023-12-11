@@ -27,6 +27,6 @@ public class StartGame : MonoBehaviour
         SceneManager.LoadScene("GetJacketTask", LoadSceneMode.Additive);
         SceneManager.LoadScene("GetPhoneTask", LoadSceneMode.Additive);
         SceneManager.LoadScene("SampleScene", LoadSceneMode.Additive);
-        
+        SceneManager.LoadScene("Ending", LoadSceneMode.Additive);
     }
 }

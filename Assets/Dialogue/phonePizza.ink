@@ -11,5 +11,5 @@ MMMMM *chews loudly*
 MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -> slide5
 
 === slide5 ===
-Ok. Now get me a drink.
+Ok. Now I'm thirsty. Get me a cup of fun juice!
 -> END

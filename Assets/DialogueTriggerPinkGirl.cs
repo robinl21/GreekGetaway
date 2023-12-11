@@ -107,7 +107,7 @@ public class DialogeTriggerPinkGirl : MonoBehaviour
                                 // inactivate vomit
                                 vomit.SetActive(false);
                                 Inventory.inventory.DestroyItem("PaperTowel");
-                                QuestScript.questScript.UpdateStatus(questName, "She wants a drink?");
+                                QuestScript.questScript.UpdateStatus(questName, "She wants a cup of what?");
                             }
                             else {
                                 Debug.Log("NO TOWEL");

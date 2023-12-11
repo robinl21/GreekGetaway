@@ -165,7 +165,7 @@ public class DialogueTriggerPhoneGiver : MonoBehaviour
 
                                 // need to destroy item pizza
                                 Inventory2.inventory2.DestroyItem("Pizza");
-                                QuestScript.questScript.UpdateStatus(questName, "Get him a drink!");
+                                QuestScript.questScript.UpdateStatus(questName, "Get him a cup of fun juice!");
                             }
                             else {
                                 // stay in current stage:

@@ -412,8 +412,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
-  m_fontSizeBase: 48
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1743,8 +1743,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
-  m_fontSizeBase: 48
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2185,7 +2185,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 432066701}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.32790184
+  m_Size: 0.3279966
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3511,7 +3511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34a83209bce395d4ea119e0ea833c7ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalTime: 120
+  totalTime: 300
   timerVisual: {fileID: 0}
   music:
   - {fileID: 8300000, guid: bc881c546907f8044abc208fbda9335a, type: 3}
@@ -4277,7 +4277,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 262.45}
+  m_AnchoredPosition: {x: 0, y: 262.45004}
   m_SizeDelta: {x: 0, y: 800}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1472233450
@@ -4393,7 +4393,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 262.45}
+  m_AnchoredPosition: {x: 0, y: 262.45004}
   m_SizeDelta: {x: 0, y: 800}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1477010442
@@ -4521,7 +4521,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1519126597}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.32790184
+  m_Size: 0.3279966
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

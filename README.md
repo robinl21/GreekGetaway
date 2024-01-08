@@ -1,0 +1,2 @@
+Pokemon map design meets the chaotic problem solving of Untitled Goose Game as you navigate our top-down 2D map of a frat house, with each level corresponding to a floor of the house, filled with other drunk college students. Players looking for a balance between asymmetric and symmetric collaboration will be enthused as they divide and conquer using split screen to find their missing keys and wallets, and unite in order to avoid their opps and escape the building. 
+https://kudanagwatidzo.itch.io/greek-geta
